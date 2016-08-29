@@ -1,6 +1,6 @@
 ## Assignment #1: Maze Solver
 
-#### Overview
+### Overview
 The overall goal of this assignment is to implement a C++ application that makes use of recursion and bitwise operators.
 
 The functional goal is to traverse a given maze and find a solution. A maze is a 16 x 16 grid. You can keep track of your position in the maze with X and Y coordinates. In the example below (see image on the left) the maze walls are represented with gray squares. The empty spaces or paths are represented by white squares. Once solved (see image on the right), the green squares represent the path taken to solve the maze. Some mazes might not have a solution.
@@ -9,7 +9,7 @@ The functional goal is to traverse a given maze and find a solution. A maze is a
 
 You are tasked with creating an algorithm that will solve a binary maze. Take the example above and replace the white squares with zeroes and the gray squares with ones. Your goal is to find a path that will lead you to the exit (which is always located at the bottom right square). The algorithm can traverse through the maze and it can only move to positions where the bit’s value is zero. It can’t move out of the bounds of the maze and it should not be able to move to positions that it already visited.
 
-#### Functional Requirements
+### Functional Requirements
 * Each maze row is represented with a variable of type `short`. These variables are 2 byte long and so can hold **16 bits**.
 * Create a **recursive** function `move` that can traverse the maze. The function should keep track of its current position using X and Y coordinates. From the example above, **Y indicates which row and X indicates a specific bit on the row**. For instance X = 2 and Y = 0 is the location of a gray square in the example above.
 * The **base cases** for the recursive function `move` are:
@@ -26,7 +26,7 @@ You are tasked with creating an algorithm that will solve a binary maze. Take th
 * There can't be any movement outside the **bounds** of the maze.
 * The program must not move to positions that it has previously moved to. This is to avoid loops.
 
-#### Getting Started
+### Getting Started
 
 1. **[Download](https://github.com/xaviermerino/ECE2551-SoftHardDesign/blob/master/Homework-1/starter.zip?raw=true)** the starter file set. It will contain the following files:
   * `catch.hpp`
@@ -47,7 +47,7 @@ You are tasked with creating an algorithm that will solve a binary maze. Take th
   * `void showMaze()`
 7. The **program will now compile**. If you try running the program it will tell you that it has **failed all the tests**. Your goal is to make the program pass all the tests by completing the implementation of the methods given to you. You can implement helper functions if needed. See the following section for more information.
 
-#### Technical Requirements
+### Technical Requirements
 This section will serve as a guideline of what is necessary for the program to pass all the tests. We perform unit testing using the **Catch** framework. Catch is a **header-only** framework which means you just need to drop the header file containing the framework into your project. This is the reason behind the `catch.hpp` file.
 
 You can also see that some code is provided in the `main.cpp` file. This code tests the code that you placed in the `solver.h` file. If your code passes all the tests it is ready for submission and will, most likely **(cheating is heavily penalized)**, receive full credit.
@@ -148,7 +148,7 @@ By the end of your program, if the maze was solved then the `pathRows` array sho
 
 You can add extra functions to help you complete the assignment but the testing program will assume that you are following what has been defined here. You can read the tests in the `main.cpp` file and dig deeper on what the testing program demands of you. Notice that the use of `std::bitset` is reserved for the testing program. **You must not modify any of the tests.**
 
-#### Self-Grading and Feedback
+### Self-Grading and Feedback
 Once you have implemented all of the functions your goal is to pass all the tests and obtain this output:
 
 ```
