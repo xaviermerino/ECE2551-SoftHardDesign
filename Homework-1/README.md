@@ -20,7 +20,7 @@ You are tasked with creating an algorithm that will solve a binary maze. Take th
   * Move down
   * Move left
   * Move up
-* The program must attempt to move right, then down, then left, and finally up. In other words, the **priority** of movements is: right, down, left, and up.
+* The program **must** attempt to move right, then down, then left, and finally up. In other words, the **priority** of movements is: right, down, left, and up.
 * **Diagonal** movements are not allowed.
 * Movement is only allowed to positions where the bit's value is zero.
 * There can't be any movement outside the **bounds** of the maze.
@@ -32,7 +32,7 @@ You are tasked with creating an algorithm that will solve a binary maze. Take th
   * `catch.hpp`
   * `main.cpp`
   * `solver.h`
-2. Use your favorite IDE or editor to modify your files. At first, **the program won't compile**. Follow this guideline to get it to compile.
+2. Use your favorite IDE or editor to modify your files. At first, **the program won't compile**. Follow steps 3 - 7 to below to get it to compile.
 3. In `solver.h`, create an **array** of type `short` that holds 16 elements. This array will be named `mazeRows` and each entry will contain a row of the maze itself. Initialize it to zero.
 4. In `solver.h`, create an **array** of type `short` that holds 16 elements. This array will be named `pathRows` and as your program finds the solution it will modify it to reflect the path taken to solve the maze. Initialize it to zero.
 5. In `solver.h`, create an `enum` and name it `BitType` it should hold the following two values:
@@ -123,7 +123,7 @@ By the end of your program, if the maze was solved then the `pathRows` array sho
 
 * **void clearPath()**: This function sets all of the rows in `pathRows` to zero. It clears the path taken by the program to solve the maze.
 
-* **bool move(int x, int y)**: This is the recursive function in the program. It requires you to supply it with a starting X and Y coordinate. After checking each movement option and no more moves are available, the function should return `false`. The function returning `false` is the equivalent of moving back one step. This movement back will allow for the program to move through alternative paths. If the program steps back all the way to the beginning and does not find a path to the end, then the maze is not solvable. If the function returns `true` then the maze is solvable. This function should respect the movement priority. Visit the [Functional Requirements](#functional-requirements)  section for more information on this function.  
+* **bool move(int x, int y)**: This is the recursive function in the program. It requires you to supply it with a starting X and Y coordinate. After checking each movement option and no more moves are available, the function should return `false`. The function returning `false` is the equivalent of moving back one step. This movement back will allow for the program to move through alternative paths. If the program steps back all the way to the beginning and does not find a path to the end, then the maze is not solvable. If the function returns `true` then the maze is solvable. This function should respect the movement priority. The testing program will always start at coordinates X = 0 and Y = 0. Visit the [Functional Requirements](#functional-requirements)  section for more information on this function.
 
 * **void showMaze()**: This function must print the bit representation of the maze. If invoked before solving the maze then it should print just zeroes and ones representing the maze. If invoked after solving the maze, then it should print the maze (this is the zeroes and ones) and asterisks for the path taken. This is the **only function allowed to print to the console**. This is an example of the output for a solved maze (note that appropriate spacing is necessary to appreciate the solution!):
 
@@ -156,3 +156,6 @@ All tests passed (1740 assertions in 4 test cases)
 ```
 
 This is provided for you to get feedback on your code. You can attempt to fix it and prepare it for submission once it passes all the tests. Once submitted, a set of similar tests will be run on your solution.
+
+### Submission
+You are expected to submit your a zip file in Canvas by the specified deadline. The zip file name must match your Tracks ID. For instance, if your Tracks ID is *aLastname2016* then your zip file should be called **aLastname2016.zip**. The zip file should only contain the `solver.h` file. 
