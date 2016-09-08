@@ -102,11 +102,87 @@ The sample code above will create the `Matrix` object below.
 <br>
 * **Status add(const Matrix& other)**: Function that takes as an argument a matrix `other` and adds it, element-wise, to the calling object. It returns a value of type `Status` (defined previously). It should return `NoError` if the addition was carried out successfully or `DimensionError` if the matrices' dimensions do not match.
 
+```c++
+enum { RowOne, RowTwo, RowThree };
+const int numberRows = 3;
+
+std::vector<std::vector<double>> dataOne;
+dataOne.resize(numberRows);
+
+dataOne[RowOne].push_back(8);
+dataOne[RowOne].push_back(7);
+dataOne[RowOne].push_back(5);
+dataOne[RowTwo].push_back(0);
+dataOne[RowTwo].push_back(2);
+dataOne[RowTwo].push_back(4);
+dataOne[RowThree].push_back(6);
+dataOne[RowThree].push_back(4);
+dataOne[RowThree].push_back(2);
+
+std::vector<std::vector<double>> dataTwo;
+dataTwo.resize(numberRows);
+
+dataTwo[RowOne].push_back(1);
+dataTwo[RowOne].push_back(2);
+dataTwo[RowOne].push_back(3);
+dataTwo[RowTwo].push_back(4);
+dataTwo[RowTwo].push_back(5);
+dataTwo[RowTwo].push_back(4);
+dataTwo[RowThree].push_back(1);
+dataTwo[RowThree].push_back(2);
+dataTwo[RowThree].push_back(3);
+
+Matrix one(dataOne);
+Matrix two(dataTwo);
+
+one.add(two);
+```
+
+The sample code above will result in the matrix addition as pictured below. 
+
 <br>
 ![add](https://github.com/xaviermerino/ECE2551-SoftHardDesign/blob/master/Homework-2/add.png?raw=true)
 
 <br>
 * **Status subtract(const Matrix& other)**: Function that takes as an argument a matrix `other` and subtracts it, element-wise, from the calling object. It returns a value of type `Status` (defined previously). It should return `NoError` if the subtraction was carried out successfully or `DimensionError` if the matrices' dimensions do not match.
+
+```c++
+enum { RowOne, RowTwo, RowThree };
+const int numberRows = 3;
+
+std::vector<std::vector<double>> dataOne;
+dataOne.resize(numberRows);
+
+dataOne[RowOne].push_back(8);
+dataOne[RowOne].push_back(7);
+dataOne[RowOne].push_back(5);
+dataOne[RowTwo].push_back(4);
+dataOne[RowTwo].push_back(5);
+dataOne[RowTwo].push_back(4);
+dataOne[RowThree].push_back(6);
+dataOne[RowThree].push_back(4);
+dataOne[RowThree].push_back(2);
+
+std::vector<std::vector<double>> dataTwo;
+dataTwo.resize(numberRows);
+
+dataTwo[RowOne].push_back(1);
+dataTwo[RowOne].push_back(2);
+dataTwo[RowOne].push_back(3);
+dataTwo[RowTwo].push_back(4);
+dataTwo[RowTwo].push_back(5);
+dataTwo[RowTwo].push_back(4);
+dataTwo[RowThree].push_back(1);
+dataTwo[RowThree].push_back(2);
+dataTwo[RowThree].push_back(1);
+
+Matrix one(dataOne);
+Matrix two(dataTwo);
+
+one.subtract(two);
+```
+
+The sample code above will result in the matrix addition as pictured below. 
 
 <br>
 ![subtract](https://github.com/xaviermerino/ECE2551-SoftHardDesign/blob/master/Homework-2/subtract.png?raw=true)
