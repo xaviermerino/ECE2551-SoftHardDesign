@@ -77,7 +77,7 @@ Let's start explaining what each of the functions defined in the `Matrix.hpp` fi
 **The following functions belong to the `Matrix` class:**
 * **Matrix()**: Default constructor for the `Matrix` class. It must initialize `rowSize` and `colSize` to zero.
 
-* **Matrix(const std::vector\<std::vector\<double\>\>& data)**: Parametrized constructor for the `Matrix` class. It takes a vector of row vectors (that store data of type double), resizes the `matrix` data member accordingly and copies the information in `data` to `matrix`.
+* **`Matrix(const std::vector\<std::vector\<double\>\>& data)`**: Parametrized constructor for the `Matrix` class. It takes a vector of row vectors (that store data of type double), resizes the `matrix` data member accordingly and copies the information in `data` to `matrix`.
 
 * **Status add(const Matrix& other)**: Function that takes as an argument a matrix `other` and adds it, element-wise, to the calling object. It returns a value of type `Status` (defined previously). It should return `NoError` if the addition was carried out successfully or `DimensionError` if the matrices' dimensions do not match.
 
