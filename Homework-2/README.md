@@ -111,6 +111,10 @@ Let's start explaining what each of the functions defined in the `Matrix.hpp` fi
 <br>
 * **void transpose()**: The transpose of a matrix is a new matrix whose rows are the columns of the original. This function updates the `matrix` data member with its transpose.
 
+<br>
+![transpose](https://github.com/xaviermerino/ECE2551-SoftHardDesign/blob/master/Homework-2/Transpose.png?raw=true)
+
+<br>
 * **void zero()**: This function updates the `matrix` data member elements to zero.
 
 * **void show() const**: This function prints the representation of the calling object to the console.
@@ -130,7 +134,7 @@ Let's start explaining what each of the functions defined in the `Matrix.hpp` fi
 * **Matrix getMinor(int row, int column)**: This function returns a new matrix (submatrix) formed by deleting the specified row and column from the original matrix.
 
 **The following function belongs to the `HelpingFunctions` class.**
-* **double dotProduct(const std::vector\<double\>& x, const std::vector\<double\>& y)**: This is a static method that performs the a dot product between two given vectors. If the vectors are not the same size return `NAN`, otherwise return the appropriate result.
+* **double dotProduct(const std::vector\<double\>& x, const std::vector\<double\>& y)**: This is a static method that performs the a dot product between two given vectors. If the vectors are not the same size return `NaN`, otherwise return the appropriate result.
 
 #### Self-Grading and Feedback
 Once you have implemented all of the functions your goal is to pass all the tests and obtain this output:
