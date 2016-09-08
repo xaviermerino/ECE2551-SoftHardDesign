@@ -72,12 +72,15 @@ test cases: 24 | 24 failed
 assertions: 24 | 24 failed
 ```
 
-Let's start explaining what each of the functions defined in the `Matrix.hpp` file must do. Function implementations **must** be placed in the `Matrix.cpp` file.
+Let's start explaining what each of the functions defined in the `Matrix.hpp` file must do. Function implementations for **both** classes **must** be placed in the `Matrix.cpp` file.
 
 **The following functions belong to the `Matrix` class:**
 * **Matrix()**: Default constructor for the `Matrix` class. It must initialize `rowSize` and `colSize` to zero.
 * **Matrix(const std::vector\<std::vector\<double\>\>& data)**: Parametrized constructor for the `Matrix` class. It takes a vector of row vectors (that store data of type double), resizes the `matrix` data member accordingly and copies the information in `data` to `matrix`.
 * **Status add(const Matrix& other)**: Function that takes as an argument a matrix `other` and adds it, element-wise, to the calling object. It returns a value of type `Status` (defined previously). It should return `NoError` if the addition was carried out successfully or `DimensionError` if the matrices' dimensions do not match.
+
+![add](https://github.com/xaviermerino/ECE2551-SoftHardDesign/blob/master/Homework-2/add.png?raw=true)
+
 * **Status subtract(const Matrix& other)**: Function that takes as an argument a matrix `other` and subtracts it, element-wise, from the calling object. It returns a value of type `Status` (defined previously). It should return `NoError` if the subtraction was carried out successfully or `DimensionError` if the matrices' dimensions do not match.
 * **Status multiply(const Matrix& other)**: Function that takes as an argument a matrix `other` and performs a matrix product with the calling object. It must update the `matrix` data member to reflect the new dimension of the resulting matrix. The function returns a value of type `Status` (defined previously). It should return `NoError` if the matrix product was carried out successfully or `DimensionError` if the product for those two matrices is undefined.
 * **Status divide(double scalar)**: Function that takes as an argument a value of type `double` and performs an element-wise division on the calling object. The function returns a value of type `Status`. It should return `NoError` if the division was carried out successfully or `DivideByZeroError` if a division by zero was attempted.
@@ -96,22 +99,14 @@ Let's start explaining what each of the functions defined in the `Matrix.hpp` fi
 **The following function belongs to the `HelpingFunctions` class.**
 * **double dotProduct(const std::vector\<double\>& x, const std::vector\<double\>& y)**: This is a static method that performs the a dot product between two given vectors. If the vectors are not the same size return `NAN`, otherwise return the appropriate result.
 
-* **short getBit(BitType type, int x, int y)**: This function requires you to supply it with the X and Y coordinate of the bit you would like to obtain. You need to specify if you want the bit to be extracted from the `mazeRows` or `pathRows` array by passing `Maze` or `Path` as the first argument. This function makes use of bitwise operators to extract the desired bit. Remember that Y indicates the row and X the desired bit in that row. For instance, the second row, third bit of the `mazeRows` would be obtained by:
-
-```c++
-short aBit = getBit(Maze, 2, 1);
-```
-
-
-
 #### Self-Grading and Feedback
 Once you have implemented all of the functions your goal is to pass all the tests and obtain this output:
 
 ```
-All tests passed (1740 assertions in 4 test cases)
+All tests passed (182 assertions in 24 test cases)
 ```
 
 This is provided for you to get feedback on your code. You can attempt to fix it and prepare it for submission once it passes all the tests. Once submitted, a set of similar tests will be run on your solution.
 
 #### Submission
-You are expected to submit your a zip file in Canvas by the specified deadline. The zip file name must match your Tracks ID. For instance, if your Tracks ID is *aLastname2016* then your zip file should be called **aLastname2016.zip**. The zip file should only contain the `solver.h` file.
+You are expected to submit your zip file in Canvas by the specified deadline. The zip file name must match your Tracks ID. For instance, if your Tracks ID is *aLastname2016* then your zip file should be called **aLastname2016.zip**. Resubmissions are allowed. Canvas will slightly alter the file name to indicate a resubmission with the same file name. This is expected and the grading software will obtain your latest submission as long as you keep the submitting files named *aLastname2016.zip*. The zip file should only contain the `Matrix.hpp` and `Matrix.cpp` files.
