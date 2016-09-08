@@ -82,6 +82,9 @@ Let's start explaining what each of the functions defined in the `Matrix.hpp` fi
 ![add](https://github.com/xaviermerino/ECE2551-SoftHardDesign/blob/master/Homework-2/add.png?raw=true)
 
 * **Status subtract(const Matrix& other)**: Function that takes as an argument a matrix `other` and subtracts it, element-wise, from the calling object. It returns a value of type `Status` (defined previously). It should return `NoError` if the subtraction was carried out successfully or `DimensionError` if the matrices' dimensions do not match.
+
+![subtract](https://github.com/xaviermerino/ECE2551-SoftHardDesign/blob/master/Homework-2/subtract.png?raw=true)
+
 * **Status multiply(const Matrix& other)**: Function that takes as an argument a matrix `other` and performs a matrix product with the calling object. It must update the `matrix` data member to reflect the new dimension of the resulting matrix. The function returns a value of type `Status` (defined previously). It should return `NoError` if the matrix product was carried out successfully or `DimensionError` if the product for those two matrices is undefined.
 * **Status divide(double scalar)**: Function that takes as an argument a value of type `double` and performs an element-wise division on the calling object. The function returns a value of type `Status`. It should return `NoError` if the division was carried out successfully or `DivideByZeroError` if a division by zero was attempted.
 * **void multiply(double scalar)**: Function that takes as an argument a value of type `double` and performs an element-wise multiplication on the calling object.
