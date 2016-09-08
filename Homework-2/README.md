@@ -76,7 +76,9 @@ Let's start explaining what each of the functions defined in the `Matrix.hpp` fi
 
 **The following functions belong to the `Matrix` class:**
 * **Matrix()**: Default constructor for the `Matrix` class. It must initialize `rowSize` and `colSize` to zero.
+
 * **Matrix(const std::vector\<std::vector\<double\>\>& data)**: Parametrized constructor for the `Matrix` class. It takes a vector of row vectors (that store data of type double), resizes the `matrix` data member accordingly and copies the information in `data` to `matrix`.
+
 * **Status add(const Matrix& other)**: Function that takes as an argument a matrix `other` and adds it, element-wise, to the calling object. It returns a value of type `Status` (defined previously). It should return `NoError` if the addition was carried out successfully or `DimensionError` if the matrices' dimensions do not match.
 
 <br>
@@ -96,16 +98,35 @@ Let's start explaining what each of the functions defined in the `Matrix.hpp` fi
 
 <br>
 * **Status divide(double scalar)**: Function that takes as an argument a value of type `double` and performs an element-wise division on the calling object. The function returns a value of type `Status`. It should return `NoError` if the division was carried out successfully or `DivideByZeroError` if a division by zero was attempted.
+
+<br>
+![divide](https://github.com/xaviermerino/ECE2551-SoftHardDesign/blob/master/Homework-2/divide.png?raw=true)
+
+<br>
 * **void multiply(double scalar)**: Function that takes as an argument a value of type `double` and performs an element-wise multiplication on the calling object.
+
+<br>
+![divide](https://github.com/xaviermerino/ECE2551-SoftHardDesign/blob/master/Homework-2/multiplyScalar.png?raw=true)
+
+<br>
 * **void transpose()**: The transpose of a matrix is a new matrix whose rows are the columns of the original. This function updates the `matrix` data member with its transpose.
+
 * **void zero()**: This function updates the `matrix` data member elements to zero.
+
 * **void show() const**: This function prints the representation of the calling object to the console.
+
 * **double getDeterminant()**: This function returns the determinant of the calling object. This recursive function should consider the base and recursive cases explained above to calculate the result. If the calling object is not a square matrix, you must return `NaN` (stands for **not a number**), otherwise return the appropriate result.
+
 * **double getAt(int row, int column) const**: This function returns the element located at the specified row and column within the `matrix` data member. There is no need for bounds checking, although by doing so you may avoid segmentation faults and Index-Out-Of-Bounds errors.
+
 * **int getRowSize() const**: This function returns the number of rows in the `matrix` data member. This information is provided by `rowSize`. It basically serves as a get method for the `rowSize` **private** data member.
+
 * **int getColSize() const**: This function returns the number of columns in the `matrix` data member. This information is provided by `colSize`. It basically serves as a get method for the `colSize` **private** data member.
+
 * **bool isSquare() const**: This function returns `true` if the calling object is a square matrix. It returns `false` otherwise.
+
 * **bool hasSameDimensionAs(const Matrix& other)**: This function takes as an argument a matrix `other`. If the calling object and the `other` matrix have the same dimensions it should return `true`. Otherwise, it must return `false`.
+
 * **Matrix getMinor(int row, int column)**: This function returns a new matrix (submatrix) formed by deleting the specified row and column from the original matrix.
 
 **The following function belongs to the `HelpingFunctions` class.**
