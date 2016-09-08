@@ -138,7 +138,7 @@ Matrix two(dataTwo);
 one.add(two);
 ```
 
-The sample code above will result in the matrix addition as pictured below. 
+The sample code above will result in the matrix addition as pictured below.
 
 <br>
 ![add](https://github.com/xaviermerino/ECE2551-SoftHardDesign/blob/master/Homework-2/add.png?raw=true)
@@ -182,7 +182,7 @@ Matrix two(dataTwo);
 one.subtract(two);
 ```
 
-The sample code above will result in the matrix addition as pictured below. 
+The sample code above will result in the matrix subtraction as pictured below.
 
 <br>
 ![subtract](https://github.com/xaviermerino/ECE2551-SoftHardDesign/blob/master/Homework-2/subtract.png?raw=true)
@@ -190,11 +190,68 @@ The sample code above will result in the matrix addition as pictured below.
 <br>
 * **Status multiply(const Matrix& other)**: Function that takes as an argument a matrix `other` and performs a matrix product with the calling object. It must update the `matrix` data member to reflect the new dimension of the resulting matrix. The function returns a value of type `Status` (defined previously). It should return `NoError` if the matrix product was carried out successfully or `DimensionError` if the product for those two matrices is undefined.
 
+```c++
+enum { RowOne, RowTwo, RowThree };
+const int rowsOne = 2;
+const int rowsTwo = 3;
+
+std::vector<std::vector<double>> dataOne;
+dataOne.resize(rowsOne);
+
+dataOne[RowOne].push_back(1);
+dataOne[RowOne].push_back(2);
+dataOne[RowOne].push_back(1);
+dataOne[RowTwo].push_back(2);
+dataOne[RowTwo].push_back(1);
+dataOne[RowTwo].push_back(2);
+
+std::vector<std::vector<double>> dataTwo;
+dataTwo.resize(rowsTwo);
+
+dataTwo[RowOne].push_back(1);
+dataTwo[RowOne].push_back(2);
+dataTwo[RowTwo].push_back(2);
+dataTwo[RowTwo].push_back(1);
+dataTwo[RowThree].push_back(1);
+dataTwo[RowThree].push_back(2);
+
+Matrix one(dataOne);
+Matrix two(dataTwo);
+
+one.multiply(two);
+```
+
+The sample code above will result in the matrix multiplication as pictured below.
+
 <br>
 ![multiply](https://github.com/xaviermerino/ECE2551-SoftHardDesign/blob/master/Homework-2/multiply.png?raw=true)
 
 <br>
 * **Status divide(double scalar)**: Function that takes as an argument a value of type `double` and performs an element-wise division on the calling object. The function returns a value of type `Status`. It should return `NoError` if the division was carried out successfully or `DivideByZeroError` if a division by zero was attempted.
+
+```c++
+enum { RowOne, RowTwo, RowThree };
+const int numberRows = 3;
+
+std::vector<std::vector<double>> dataOne;
+dataOne.resize(numberRows);
+
+dataOne[RowOne].push_back(8);
+dataOne[RowOne].push_back(6);
+dataOne[RowOne].push_back(4);
+dataOne[RowTwo].push_back(2);
+dataOne[RowTwo].push_back(2);
+dataOne[RowTwo].push_back(2);
+dataOne[RowThree].push_back(4);
+dataOne[RowThree].push_back(6);
+dataOne[RowThree].push_back(8);
+
+Matrix one(dataOne);
+
+one.divide(2.0);
+```
+
+The sample code above will result in the matrix division as pictured below.
 
 <br>
 ![divide](https://github.com/xaviermerino/ECE2551-SoftHardDesign/blob/master/Homework-2/divide.png?raw=true)
@@ -202,17 +259,81 @@ The sample code above will result in the matrix addition as pictured below.
 <br>
 * **void multiply(double scalar)**: Function that takes as an argument a value of type `double` and performs an element-wise multiplication on the calling object.
 
+```c++
+enum { RowOne, RowTwo, RowThree };
+const int numberRows = 3;
+
+std::vector<std::vector<double>> dataOne;
+dataOne.resize(numberRows);
+
+dataOne[RowOne].push_back(1);
+dataOne[RowOne].push_back(2);
+dataOne[RowOne].push_back(3);
+dataOne[RowTwo].push_back(4);
+dataOne[RowTwo].push_back(3);
+dataOne[RowTwo].push_back(2);
+dataOne[RowThree].push_back(1);
+dataOne[RowThree].push_back(0);
+dataOne[RowThree].push_back(1);
+
+Matrix one(dataOne);
+
+one.multiply(2.0);
+```
+
+The sample code above will result in the matrix multiplication as pictured below.
+
 <br>
 ![divide](https://github.com/xaviermerino/ECE2551-SoftHardDesign/blob/master/Homework-2/multiplyScalar.png?raw=true)
 
 <br>
 * **void transpose()**: The transpose of a matrix is a new matrix whose rows are the columns of the original. This function updates the `matrix` data member with its transpose.
 
+```c++
+enum { RowOne, RowTwo };
+const int rowsOne = 3;
+
+std::vector<std::vector<double>> dataOne;
+dataOne.resize(rowsOne);
+
+dataOne[RowOne].push_back(1);
+dataOne[RowOne].push_back(2);
+dataOne[RowOne].push_back(1);
+dataOne[RowTwo].push_back(2);
+dataOne[RowTwo].push_back(1);
+dataOne[RowTwo].push_back(2);
+
+Matrix one(dataOne);
+one.transpose();
+```
+
+The sample code above will result in the transpose of the calling object as pictured below.
+
 <br>
 ![transpose](https://github.com/xaviermerino/ECE2551-SoftHardDesign/blob/master/Homework-2/Transpose.png?raw=true)
 
 <br>
 * **void zero()**: This function updates the `matrix` data member elements to zero.
+
+```c++
+enum { RowOne, RowTwo };
+const int rowsOne = 3;
+
+std::vector<std::vector<double>> dataOne;
+dataOne.resize(rowsOne);
+
+dataOne[RowOne].push_back(1);
+dataOne[RowOne].push_back(2);
+dataOne[RowOne].push_back(1);
+dataOne[RowTwo].push_back(2);
+dataOne[RowTwo].push_back(1);
+dataOne[RowTwo].push_back(2);
+
+Matrix one(dataOne);
+one.zero();
+```
+
+The sample code above will result in the calling object being filled with zeroes.
 
 <br>
 ![zero](https://github.com/xaviermerino/ECE2551-SoftHardDesign/blob/master/Homework-2/Zero.png?raw=true)
@@ -247,4 +368,4 @@ All tests passed (182 assertions in 24 test cases)
 This is provided for you to get feedback on your code. You can attempt to fix it and prepare it for submission once it passes all the tests. Once submitted, a set of similar tests will be run on your solution.
 
 #### Submission
-You are expected to submit your zip file in Canvas by the specified deadline. The zip file name must match your Tracks ID. For instance, if your Tracks ID is *aLastname2016* then your zip file should be called **aLastname2016.zip**. Resubmissions are allowed. Canvas will slightly alter the file name to indicate a resubmission with the same file name. This is expected and the grading software will obtain your latest submission as long as you keep the submitting files named *aLastname2016.zip*. The zip file should only contain the `Matrix.hpp` and `Matrix.cpp` files.
+You are expected to submit your zip file in Canvas by the specified deadline. The zip file name must match your Tracks ID. For instance, if your Tracks ID is *aLastname2016* then your zip file should be called **aLastname2016.zip**. Resubmissions are allowed. Canvas will slightly alter the file name to indicate a resubmission with the same file name. This is expected and the grading software will obtain your latest submission as long as you keep submitting files named *aLastname2016.zip*. The zip file should only contain the `Matrix.hpp` and `Matrix.cpp` files.
