@@ -77,8 +77,29 @@ Let's start explaining what each of the functions defined in the `Matrix.hpp` fi
 **The following functions belong to the `Matrix` class:**
 * **Matrix()**: Default constructor for the `Matrix` class. It must initialize `rowSize` and `colSize` to zero.
 
-* **`Matrix(const std::vector\<std::vector\<double\>\>& data)`**: Parametrized constructor for the `Matrix` class. It takes a vector of row vectors (that store data of type double), resizes the `matrix` data member accordingly and copies the information in `data` to `matrix`.
+* **Matrix(const std::vector\<std::vector\<double\>\>& data)**: Parametrized constructor for the `Matrix` class. It takes a vector of row vectors (that store data of type double), resizes the `matrix` data member accordingly and copies the information in `data` to `matrix`.
 
+```c++
+enum { RowOne, RowTwo };
+
+std::vector<std::vector<double>> data;
+const int numberRows = 2;
+data.resize(numberRows);
+
+data[RowOne].push_back(9);
+data[RowOne].push_back(7);
+data[RowTwo].push_back(0);
+data[RowTwo].push_back(2);
+
+Matrix sample(data);
+```
+
+The sample code above will create the `Matrix` object below.
+
+<br>
+![add](https://github.com/xaviermerino/ECE2551-SoftHardDesign/blob/master/Homework-2/matrix2x2.png?raw=true)
+
+<br>
 * **Status add(const Matrix& other)**: Function that takes as an argument a matrix `other` and adds it, element-wise, to the calling object. It returns a value of type `Status` (defined previously). It should return `NoError` if the addition was carried out successfully or `DimensionError` if the matrices' dimensions do not match.
 
 <br>
@@ -117,6 +138,10 @@ Let's start explaining what each of the functions defined in the `Matrix.hpp` fi
 <br>
 * **void zero()**: This function updates the `matrix` data member elements to zero.
 
+<br>
+![zero](https://github.com/xaviermerino/ECE2551-SoftHardDesign/blob/master/Homework-2/Zero.png?raw=true)
+
+<br>
 * **void show() const**: This function prints the representation of the calling object to the console.
 
 * **double getDeterminant()**: This function returns the determinant of the calling object. This recursive function should consider the base and recursive cases explained above to calculate the result. If the calling object is not a square matrix, you must return `NaN` (stands for **not a number**), otherwise return the appropriate result.
