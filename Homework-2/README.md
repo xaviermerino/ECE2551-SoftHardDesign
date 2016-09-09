@@ -352,7 +352,7 @@ The sample code above will result in displaying a matrix similar to the one show
 13  14  90
 ```
 
-* **double getDeterminant()**: This function returns the determinant of the calling object. This recursive function should consider the base and recursive cases explained above to calculate the result. If the calling object is not a square matrix, you must return `NaN` (stands for **not a number**), otherwise return the appropriate result. See the details on how to implement this algorithm here.
+* **double getDeterminant()**: This function returns the determinant of the calling object. This recursive function should consider the base and recursive cases explained above to calculate the result. If the calling object is not a square matrix, you must return `NaN` (stands for **not a number**), otherwise return the appropriate result.
 
 
 * **double getAt(int row, int column) const**: This function returns the element located at the specified row and column within the `matrix` data member. There is no need for bounds checking, although by doing so you may avoid segmentation faults and Index-Out-Of-Bounds errors.
