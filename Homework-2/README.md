@@ -345,7 +345,7 @@ The sample code above will result in the calling object being filled with zeroes
 sampleMatrix.show();
 ```
 
-The sample code above will result in displaying a matrix similar to the one shown below. 
+The sample code above will result in displaying a matrix similar to the one shown below.
 ```
 30  24  18
 84  69  54
@@ -361,7 +361,7 @@ The sample code above will result in displaying a matrix similar to the one show
 double number = sampleMatrix.getAt(1,1);
 ```
 
-The sample code above will result in `number` holding the value 3. You can see this in the picture below. 
+The sample code above will result in `number` holding the value 3. You can see this in the picture below.
 
 <br>
 ![zero](https://github.com/xaviermerino/ECE2551-SoftHardDesign/blob/master/Homework-2/getAt.png?raw=true)
@@ -369,13 +369,35 @@ The sample code above will result in `number` holding the value 3. You can see t
 <br>
 * **int getRowSize() const**: This function returns the number of rows in the `matrix` data member. This information is provided by `rowSize`. It basically serves as a get method for the `rowSize` **private** data member.
 
+```c++
+int numberOfRows = sampleMatrix.getRowSize();
+```
+
 * **int getColSize() const**: This function returns the number of columns in the `matrix` data member. This information is provided by `colSize`. It basically serves as a get method for the `colSize` **private** data member.
+
+```c++
+int numberOfCols = sampleMatrix.getRowSize();
+```
 
 * **bool isSquare() const**: This function returns `true` if the calling object is a square matrix. It returns `false` otherwise.
 
+```c++
+bool square = sampleMatrix.isSquare();
+```
+
 * **bool hasSameDimensionAs(const Matrix& other)**: This function takes as an argument a matrix `other`. If the calling object and the `other` matrix have the same dimensions it should return `true`. Otherwise, it must return `false`.
 
+```c++
+bool sameDim = sampleMatrix.hasSameDimensionAs(otherMatrix);
+```
+
 * **Matrix getMinor(int row, int column)**: This function returns a new matrix (submatrix) formed by deleting the specified row and column from the original matrix.
+
+```c++
+sampleMatrix.getMinor(0,0);
+```
+
+The sample code above will result in generating a submatrix based on the calling object. You can see this in the picture below.
 
 <br>
 ![zero](https://github.com/xaviermerino/ECE2551-SoftHardDesign/blob/master/Homework-2/minor.png?raw=true)
@@ -383,6 +405,10 @@ The sample code above will result in `number` holding the value 3. You can see t
 <br>
 **The following function belongs to the `HelpingFunctions` class.**
 * **double dotProduct(const std::vector\<double\>& x, const std::vector\<double\>& y)**: This is a static method that performs the a dot product between two given vectors. If the vectors are not the same size return `NaN`, otherwise return the appropriate result.
+
+```c++
+double dot = HelpingFunctions::dotProduct(vector1, vector2);
+```
 
 #### Self-Grading and Feedback
 Once you have implemented all of the functions your goal is to pass all the tests and obtain this output:
