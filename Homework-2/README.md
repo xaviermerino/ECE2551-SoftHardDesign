@@ -11,7 +11,13 @@ A matrix is a rectangular array of numbers arranged in a rows and columns fashio
 
 In the end, you are tasked with creating a class that will perform certain matrices operations. In the future assignments you will be building extra functionality to this class as you explore other object-oriented principles.
 
+For a brief linear algebra review you can check:
+* **Video Lecture:** [Introduction to matrices](https://youtu.be/GguVxHgTv0s) (18 min)
+* **Video Lecture:** [Computing Determinants of n-dimensional Matrices](https://youtu.be/nbHdSaQu8BI) (10 min)
+
 For more information about the math behind matrices and their operations you can [check this](https://www.khanacademy.org/math/precalculus/precalc-matrices).
+
+For more information on classes and objects you can follow this [tutorial](https://github.com/xaviermerino/ECE2551-SoftHardDesign/blob/master/Homework-2/tutorial-classes-objects.pdf?raw=true).
 
 #### Functional Requirements
 The following requirements are an overview of what is expected of you in this assignment. More details on how to implement the solution can be found in the Technical Requirements section.
@@ -376,7 +382,7 @@ int numberOfRows = sampleMatrix.getRowSize();
 * **int getColSize() const**: This function returns the number of columns in the `matrix` data member. This information is provided by `colSize`. It basically serves as a get method for the `colSize` **private** data member.
 
 ```c++
-int numberOfCols = sampleMatrix.getRowSize();
+int numberOfCols = sampleMatrix.getColSize();
 ```
 
 * **bool isSquare() const**: This function returns `true` if the calling object is a square matrix. It returns `false` otherwise.
