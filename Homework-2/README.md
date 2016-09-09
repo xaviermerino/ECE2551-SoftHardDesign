@@ -45,7 +45,7 @@ For more information on `std::vector` you can check [here](http://www.cplusplus.
 
 #### Getting Started
 
-1. **[Download](https://github.com/xaviermerino/ECE2551-SoftHardDesign/blob/master/Homework-1/starter.zip?raw=true)** the starter file set. It will contain the following files:
+1. **[Download](https://github.com/xaviermerino/ECE2551-SoftHardDesign/blob/master/Homework-2/starterHwk2.zip?raw=true)** the starter file set. It will contain the following files:
   * `catch.hpp`
   * `Matrix.hpp`
   * `Matrix.cpp`
