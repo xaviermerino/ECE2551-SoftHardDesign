@@ -313,7 +313,7 @@ The sample code above will result in the transpose of the calling object as pict
 ![transpose](https://github.com/xaviermerino/ECE2551-SoftHardDesign/blob/master/Homework-2/Transpose.png?raw=true)
 
 <br>
-* **void zero()**: This function updates the `matrix` data member elements to zero.
+* **void zero()**: This function updates the all of the `matrix` data member elements to zero.
 
 ```c++
 enum { RowOne, RowTwo };
@@ -339,12 +339,34 @@ The sample code above will result in the calling object being filled with zeroes
 ![zero](https://github.com/xaviermerino/ECE2551-SoftHardDesign/blob/master/Homework-2/Zero.png?raw=true)
 
 <br>
-* **void show() const**: This function prints the representation of the calling object to the console.
+* **void show() const**: This function prints the representation of the calling object to the console. The output must be formatted to be aligned.
+
+```c++
+sampleMatrix.show();
+```
+
+The sample code above will result in displaying a matrix similar to the one shown below. 
+```
+30  24  18
+84  69  54
+13  14  90
+```
 
 * **double getDeterminant()**: This function returns the determinant of the calling object. This recursive function should consider the base and recursive cases explained above to calculate the result. If the calling object is not a square matrix, you must return `NaN` (stands for **not a number**), otherwise return the appropriate result.
 
+
 * **double getAt(int row, int column) const**: This function returns the element located at the specified row and column within the `matrix` data member. There is no need for bounds checking, although by doing so you may avoid segmentation faults and Index-Out-Of-Bounds errors.
 
+```c++
+double number = sampleMatrix.getAt(1,1);
+```
+
+The sample code above will result in `number` holding the value 3. You can see this in the picture below. 
+
+<br>
+![zero](https://github.com/xaviermerino/ECE2551-SoftHardDesign/blob/master/Homework-2/getAt.png?raw=true)
+
+<br>
 * **int getRowSize() const**: This function returns the number of rows in the `matrix` data member. This information is provided by `rowSize`. It basically serves as a get method for the `rowSize` **private** data member.
 
 * **int getColSize() const**: This function returns the number of columns in the `matrix` data member. This information is provided by `colSize`. It basically serves as a get method for the `colSize` **private** data member.
@@ -355,6 +377,10 @@ The sample code above will result in the calling object being filled with zeroes
 
 * **Matrix getMinor(int row, int column)**: This function returns a new matrix (submatrix) formed by deleting the specified row and column from the original matrix.
 
+<br>
+![zero](https://github.com/xaviermerino/ECE2551-SoftHardDesign/blob/master/Homework-2/minor.png?raw=true)
+
+<br>
 **The following function belongs to the `HelpingFunctions` class.**
 * **double dotProduct(const std::vector\<double\>& x, const std::vector\<double\>& y)**: This is a static method that performs the a dot product between two given vectors. If the vectors are not the same size return `NaN`, otherwise return the appropriate result.
 
