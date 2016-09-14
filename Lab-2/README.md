@@ -35,11 +35,13 @@ The process of working with **EEPROM** in the **ATMega328p** can be easily done 
 * **EEDR:** EEPROM Data Register
 
 **To write to the EEPROM:**
+
 1. Set the value of the address register to the address in the EEPROM that you want to write to.
 2. Set the value of the data register (1 byte) to the data that you want to write.
 3. Set the appropriate bits in the control register to begin the writing process.
 
 **To read from the EEPROM:**
+
 1. Set the value of the address register to the EEPROM address you want to read.
 2. Set the appropriate bits in the control register to initiate the read.
 3. Retrieve the value read by reading the contents in the data register.  
