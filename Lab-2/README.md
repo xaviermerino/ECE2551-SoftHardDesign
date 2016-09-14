@@ -90,7 +90,7 @@ For more information and examples visit the [Arduino LiquidCrystal Library Refer
 
 #### Getting Started
 
-1. **[Download](https://github.com/xaviermerino/ECE2551-SoftHardDesign/blob/master/Homework-2/starterHwk2.zip?raw=true)** the starter file. It will contain the following file:
+1. **[Download](https://github.com/xaviermerino/ECE2551-SoftHardDesign/blob/master/Lab-2/lab2.ino?raw=true)** the starter file. It will contain the following file:
   * `lab2.ino`
 
 2. The provided file is a template file that you can use to fill in your code.
