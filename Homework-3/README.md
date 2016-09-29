@@ -65,7 +65,7 @@ The only thing that you need to do is to modify the `functions.h` files to get t
 
 Let's start explaining what each of the functions must do.
 
-* **char getCharacter(char array[][arraySize], int row, int column)**: This function takes as an argument a 2D array. The size of the array is fixed by `arraySize`. It also takes a `row` and a `column` that allows you to tap into that specific location in the provided `array`. You must use pointers to get the character. **You MUST use pointer notation.**
+* **char getCharacter(char array[][arraySize], int row, int column)**: This function takes as an argument a 2D array. The size of the array is fixed by `arraySize`. It also takes a `row` and a `column` that allows you to tap into that specific location in the provided `array`. **You MUST use pointers to get the character.**
 
 ```c++
 const unsigned int rows = 4;
