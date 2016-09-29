@@ -65,7 +65,7 @@ The only thing that you need to do is to modify the `functions.h` files to get t
 
 Let's start explaining what each of the functions must do.
 
-* **char getCharacter(char array[][arraySize], int row, int column)**: This function takes as an argument a 2D array. The size of the array is fixed by `arraySize`. It also takes a `row` and a `column` that allows you to tap into that specific location in the provided `array`. You must use pointers to get the character.  
+* **char getCharacter(char array[][arraySize], int row, int column)**: This function takes as an argument a 2D array. The size of the array is fixed by `arraySize`. It also takes a `row` and a `column` that allows you to tap into that specific location in the provided `array`. You must use pointers to get the character. **You MUST use pointer notation.**
 
 ```c++
 const unsigned int rows = 4;
@@ -83,13 +83,13 @@ getCharacter(first, 0, 0);
 ```
 
 <br>
-The code snippet performs the following: 
+The code snippet performs the following:
 
 <br>
 ![getcharacter](https://github.com/xaviermerino/ECE2551-SoftHardDesign/blob/master/Homework-3/getCharacter.png?raw=true)
 
 <br>
-* **char* getCharacterAddress(char array[][arraySize], int row, int column)**: This function takes as an argument a 2D array. The size of the array is fixed by `arraySize`. It also takes a `row` and a `column` that allows you to tap into that specific location in the provided `array`. You must return a character pointer that points to the address of the character.
+* **char* getCharacterAddress(char array[][arraySize], int row, int column)**: This function takes as an argument a 2D array. The size of the array is fixed by `arraySize`. It also takes a `row` and a `column` that allows you to tap into that specific location in the provided `array`. You must return a character pointer that points to the address of the character. **You MUST use pointer notation.**
 
 ```c++
 const unsigned int rows = 4;
@@ -105,16 +105,19 @@ char first[rows][columns] = {
 // Looks at the address of the character in position (0,1).
 // address should be something like 0x7fff5fbfe281
 void* address = getCharacterAddress(first, 0, 1);
+
+// We are using void* to be able to print the address.
+// Printing a char* will print the string instead.
 ```
 
 <br>
-The code snippet performs the following: 
+The code snippet performs the following:
 
 <br>
 ![getcharacteraddress](https://github.com/xaviermerino/ECE2551-SoftHardDesign/blob/master/Homework-3/getCharacterAddress.png?raw=true)
 
 <br>
-* **void getRow(char array[][arraySize], int row, char* resultArray)**: This function takes as an argument a 2D array. The size of the array is fixed by `arraySize`. It also takes a `row` parameter that allows you to tap into that specific row in the provided `array`. One of the nice things about pointers is that they allow functions to alter variables outside of their scope. To do this, you pass a pointer and so you allow that function to read and write to the data. This function takes a third argument, `char* resultArray`, so you can modify `resultArray` from the function itself. Use `resultArray` to hold the values in the extracted row.
+* **void getRow(char array[][arraySize], int row, char* resultArray)**: This function takes as an argument a 2D array. The size of the array is fixed by `arraySize`. It also takes a `row` parameter that allows you to tap into that specific row in the provided `array`. One of the nice things about pointers is that they allow functions to alter variables outside of their scope. To do this, you pass a pointer and so you allow that function to read and write to the data. This function takes a third argument, `char* resultArray`, so you can modify `resultArray` from the function itself. Use `resultArray` to hold the values in the extracted row. **You MUST use pointer notation.**
 
 ```c++
 const unsigned int rows = 4;
@@ -135,13 +138,13 @@ getRow(first, rowNumber, row);
 ```
 
 <br>
-The code snippet performs the following: 
+The code snippet performs the following:
 
 <br>
 ![getRow](https://github.com/xaviermerino/ECE2551-SoftHardDesign/blob/master/Homework-3/getRow.png?raw=true)
 
 <br>
-* **void getColumn(char array[][arraySize], int column, char* resultArray)**: This function takes as an argument a 2D array. The size of the array is fixed by `arraySize`. It also takes a `row` parameter that allows you to tap into that specific row in the provided `array`. This function takes a third argument, `char* resultArray`, so you can modify `resultArray` from the function itself. Use `resultArray` to hold the values in the extracted column.
+* **void getColumn(char array[][arraySize], int column, char* resultArray)**: This function takes as an argument a 2D array. The size of the array is fixed by `arraySize`. It also takes a `row` parameter that allows you to tap into that specific row in the provided `array`. This function takes a third argument, `char* resultArray`, so you can modify `resultArray` from the function itself. Use `resultArray` to hold the values in the extracted column. **You MUST use pointer notation.**
 
 ```c++
 const unsigned int rows = 4;
@@ -162,13 +165,13 @@ getColumn(first, columnNumber, column);
 ```
 
 <br>
-The code snippet performs the following: 
+The code snippet performs the following:
 
 <br>
 ![getRow](https://github.com/xaviermerino/ECE2551-SoftHardDesign/blob/master/Homework-3/getColumn.png?raw=true)
 
 <br>
-* **void insertionSort(char data[], int size)**: This function takes as an argument an array of type `char`. It also takes as an argument the `size` or length of the array. This function implements **insertion sort** which is a simple (quadratic) sorting algorithm. It is not the most efficient when it comes to performance but is efficient enough for small data sets. This function should perform in-place sorting.
+* **void insertionSort(char data[], int size)**: This function takes as an argument an array of type `char`. It also takes as an argument the `size` or length of the array. This function implements **insertion sort** which is a simple (quadratic) sorting algorithm. It is not the most efficient when it comes to performance but is efficient enough for small data sets. This function should perform in-place sorting. **It is acceptable not to use pointer notation here.**
 
 ```c++
 char test[4] = {'z', 'c', 'a', 'f'};
@@ -176,13 +179,13 @@ insertionSort(test, 4);
 ```
 
 <br>
-The code snippet performs the following: 
+The code snippet performs the following:
 
 <br>
 ![insertionSort](https://github.com/xaviermerino/ECE2551-SoftHardDesign/blob/master/Homework-3/insertionSort.png?raw=true)
 
 <br>
-* **void sortRow(char array[][arraySize], int row)**: This function takes as an argument a 2D array. It also takes a `row` as an argument that specifies which row should be sorted. The sorting algorithm should be insertion sort.
+* **void sortRow(char array[][arraySize], int row)**: This function takes as an argument a 2D array. It also takes a `row` as an argument that specifies which row should be sorted. The sorting algorithm should be insertion sort. **It is acceptable not to use pointer notation here.**
 
 ```c++
 const unsigned int rows = 4;
@@ -199,13 +202,13 @@ sortRow(first, 0);
 ```
 
 <br>
-The code snippet performs the following: 
+The code snippet performs the following:
 
 <br>
 ![sortRow](https://github.com/xaviermerino/ECE2551-SoftHardDesign/blob/master/Homework-3/sortRow.png?raw=true)
 
 <br>
-* **void sortColumn(char array[][arraySize], int column)**: This function takes as an argument a 2D array. It also takes a `column` as an argument that specifies which column should be sorted. The sorting algorithm should be insertion sort.
+* **void sortColumn(char array[][arraySize], int column)**: This function takes as an argument a 2D array. It also takes a `column` as an argument that specifies which column should be sorted. The sorting algorithm should be insertion sort. **It is acceptable not to use pointer notation here.**
 
 ```c++
 const unsigned int rows = 4;
@@ -222,7 +225,7 @@ sortColumn(first, 0);
 ```
 
 <br>
-The code snippet performs the following: 
+The code snippet performs the following:
 
 <br>
 ![sortColumn](https://github.com/xaviermerino/ECE2551-SoftHardDesign/blob/master/Homework-3/sortColumn.png?raw=true)
@@ -235,7 +238,7 @@ Once you have implemented all of the functions your goal is to pass all the test
 All tests passed (206 assertions in 18 test cases)
 ```
 
-This is provided for you to get feedback on your code. You can attempt to fix it and prepare it for submission once it passes all the tests. Once submitted, a set of similar tests will be run on your solution.
+This is provided for you to get feedback on your code. You can attempt to fix it and prepare it for submission once it passes all the tests. Once submitted, a set of similar tests will be run on your solution. **Please notice that points will be deducted even if you pass all the tests but did not use pointer notation for the functions that required it.**
 
 #### Submission
 You are expected to submit your zip file in Canvas by the specified deadline. The zip file name must match your Tracks ID. For instance, if your Tracks ID is *aLastname2016* then your zip file should be called **aLastname2016.zip**. Resubmissions are allowed. Canvas will slightly alter the file name to indicate a resubmission with the same file name. This is expected and the grading software will obtain your latest submission as long as you keep submitting files named *aLastname2016.zip*. The zip file should only contain the `functions.h` file.
