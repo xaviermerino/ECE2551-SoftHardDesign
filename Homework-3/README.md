@@ -41,7 +41,7 @@ For more information on insertion sort check this [video](https://www.youtube.co
 
 #### Getting Started
 
-1. **[Download](https://github.com/xaviermerino/ECE2551-SoftHardDesign/blob/master/Homework-2/starterHwk2.zip?raw=true)** the starter file set. It will contain the following files:
+1. **[Download](https://github.com/xaviermerino/ECE2551-SoftHardDesign/blob/master/Homework-3/Starter.zip?raw=true)** the starter file set. It will contain the following files:
   * `catch.hpp`
   * `functions.h`
   * `main.cpp`
@@ -82,6 +82,13 @@ char first[rows][columns] = {
 getCharacter(first, 0, 0);  
 ```
 
+<br>
+The code snippet performs the following: 
+
+<br>
+![getcharacter](https://github.com/xaviermerino/ECE2551-SoftHardDesign/blob/master/Homework-3/getCharacter.png?raw=true)
+
+<br>
 * **char* getCharacterAddress(char array[][arraySize], int row, int column)**: This function takes as an argument a 2D array. The size of the array is fixed by `arraySize`. It also takes a `row` and a `column` that allows you to tap into that specific location in the provided `array`. You must return a character pointer that points to the address of the character.
 
 ```c++
