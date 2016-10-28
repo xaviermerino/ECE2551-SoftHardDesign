@@ -206,7 +206,7 @@ list.size();
 list.isEmpty();
 ```
 
-* **void insert(Type& e)**: This function appends an element of type `Type` to the end of the `DoublyLinkedList`. It updates the `header` and `trailer` sentinels.
+* **void insert(Type& e)**: This function appends an element of type `Type` to the end of the `DoublyLinkedList`. It updates the `header` and `trailer` sentinels. If the element exists in the list, update that node with the new data. 
 
 The list originally looks like:
 
