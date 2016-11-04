@@ -51,10 +51,9 @@ The counter that we will be working with, since we are using **Timer0**, is `TCN
 A better solution, though, would be to make the counter overflow every 40 pulses. To do this, we set the counter's value to 216 (256 - 40) so that we make sure an overflow occurs right after 40 pulses. We can monitor the overflow flag `TOV0` to determine when the overflow occurred for `TCNT0`.
 
 <br>
-![simpleRepresentation](https://github.com/xaviermerino/ECE2551-SoftHardDesign/blob/master/Lab-HWTimers/simpleRepresentation.png?raw=true)
+<img src="https://github.com/xaviermerino/ECE2551-SoftHardDesign/blob/master/Lab-HWTimers/simpleRepresentation.png?raw=true" width="550">
 
 <br>
-
 But in order to tell the microcontroller how to use the **Timer0** we need to specify a mode first. **Timer0** has different modes. We will be using the timer in **Normal Mode**. There are other modes that you can use with this timer. The mode is set up by setting the `WGM0` bits. There are three of these identified as `WGM00`, `WGM01`, and `WGM02`.
 
 | WGM02 | WGM01 | WGM00 | Mode of Operation |
@@ -101,18 +100,31 @@ Once we set these `CS0` bits the timer starts and only stops when we clear them.
 ##### Timer0: Registers
 This section contains information about the registers you will be needing in this lab. These registers contain the flags and bits discussed above. We also discuss the ATMega328P's **Status Register** `SREG`.
 
-* **TCNT0**: TC0 Counter Value Register
+* **TCNT0 (TC0 Counter Value Register)**: This register gives access to the 8-bit counter for Timer0.
 
+<br>
+<img src="https://github.com/xaviermerino/ECE2551-SoftHardDesign/blob/master/Lab-HWTimers/TCNT0.png?raw=true" width="400">
 
-* **TCCR0A**: TC0 Control Register A
+<br>
+* **TCCR0A (TC0 Control Register A)**: The `WGM00` and `WGM01` bits in this register, along with the remaining `WGM02` bit in `TCCR0B` control the operation mode of the counter.
 
+<br>
+<img src="https://github.com/xaviermerino/ECE2551-SoftHardDesign/blob/master/Lab-HWTimers/TCCR0A.png?raw=true" width="400">
 
-* **TCCR0B**: TC0 Control Register B
+<br>
+* **TCCR0B (TC0 Control Register B)**: The `WGM02` bit in this register, along with the remaining `WGM01` and `WGM00` bits in `TCCR0A` control the operation mode of the counter.
 
+<br>
+<img src="https://github.com/xaviermerino/ECE2551-SoftHardDesign/blob/master/Lab-HWTimers/TCCR0B.png?raw=true" width="400">
 
-* **TIFR0**: TC0 Interrupt Flag Register
+<br>
+* **TIFR0 (TC0 Interrupt Flag Register)**:
+The `TOV0` bit is set when an overflow occurs in **Timer0**. `TOV0` is cleared by writing a logic one to the flag.
 
+<br>
+<img src="https://github.com/xaviermerino/ECE2551-SoftHardDesign/blob/master/Lab-HWTimers/TIFR0.png?raw=true" width="400">
 
+<br>
 * **SREG**: Status Register
 
 
