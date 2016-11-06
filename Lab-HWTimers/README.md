@@ -1,6 +1,6 @@
 ## Lab #6: Hardware Counters and Timers
 
-#### Overview
+###3 Overview
 The overall goal of this assignment is to become familiar with the basic use and configuration of timers. You will learn how to configure and access the timer registers to create a simple delay function similar to the `delay()` provided by the Arduino libraries. Throughout this procedure you will apply C++ pointers to access the ATMega328P registers and you will implement your own `pinMode()` and `digitalWrite()` functions.
 
 In the end you will toggle an LED from on to off every second using the functions that you built.
@@ -10,10 +10,10 @@ In the end you will toggle an LED from on to off every second using the function
   * Use **pointers** to access registers.
   * Recreate **functions** provided by the Arduino library.
 
-#### Introduction to Timers
+### Introduction to Timers
 Timers are used on every digital computer that you have ever used. Without timers, most of today's embedded devices would not be able to perform their functions (such as controlling pool equipment, waking us up in the morning, ...). The range of timers vary widely, from a few microseconds used to delay our programs (based on the ticks of a processor), to minutes used to keep track of our workouts, to hours used to keep track of lecture classes. The support timer operations, hardware circuitry is used to support all sorts of timer ranges. The AVR microcontroller includes a very accurate timer, accurate to the resolution of microseconds! This feature makes them suitable for timer applications.
 
-##### From Pulses to Time
+#### From Pulses to Time
 
 As you remember, everything that occurs in digital computers is driven by some clock, i.e., the system clock. The system clock is characterized by its frequency. Remember that the time it takes the CPU clock signal to repeat itself (i.e., a pulse) is referred to as a period of the signal. In digital computers, time is deduced by relating time (in seconds unit) to number of pulses. To do this, we remember that Hertz is nothing more than the number of pulses per second.
 
@@ -34,7 +34,7 @@ Now consider an application developed for a 4 MHz system that needs to blink an 
 Now that we understand how to relate pulses to time, creating a timer application is a matter of understanding the registers provided by the ATMega328P to detect clock pulses and to configure desired time values.
 
 
-##### Timers as Registers
+#### Timers as Registers
 The ATMega328P provides two types of timers: 8-bit and 16-bit timers.
 
 In an 8-bit timer, the register used to store the value of the number of pulses is 8-bit wide whereas in the 16-bit timer, the register width for pulse-count is 16 bits.
@@ -99,7 +99,7 @@ For your convenience, the table below lists the effective clock frequency after 
 <br>
 Once we set these `CS0` bits the timer starts and only stops when we clear them.
 
-##### Timer0: Registers
+#### Timer0: Registers
 This section contains information about the registers you will be needing in this lab. These registers contain the flags and bits discussed above. We also discuss the ATMega328P's **Status Register** `SREG`.
 
 * **TCNT0 (TC0 Counter Value Register)**: This register gives access to the 8-bit counter for **Timer0**.
@@ -133,7 +133,7 @@ The `TOV0` bit is set when an overflow occurs in **Timer0**. `TOV0` is cleared b
 <img src="https://github.com/xaviermerino/ECE2551-SoftHardDesign/blob/master/Lab-HWTimers/SREG.png?raw=true" width="400">
 
 <br>
-#### Getting Started
+### Getting Started
 
 1. **[Download](https://github.com/xaviermerino/ECE2551-SoftHardDesign/blob/master/Lab-HWTimers/starter.zip?raw=true)** the starter file. It will contain the following file:
   * `starter.ino`
@@ -141,13 +141,13 @@ The `TOV0` bit is set when an overflow occurs in **Timer0**. `TOV0` is cleared b
 2. The provided file is a template file that you can use to fill in your code.
 3. Fill in the function definitions for each of the classes' methods. You can implement your own, these are just there for reference.
 
-#### Functional Requirements
+### Functional Requirements
 You are required to **recreate** three of the Arduino functions.
 * You must be able to set an arbitrary delay (in milliseconds) using your own function, mimicking the behavior of `delay()`.  
 * You must be able to replicate the functionality of `pinMode()` and `digitalWrite()`.
 * You must be able to turn on and off an LED attached to pin 13. Each second you must toggle the state of the LED.
 
-#### Technical Requirements
+### Technical Requirements
 This section will serve as a guideline of what is necessary for the program to behave correctly.
 
 You need to implement the following functions:
