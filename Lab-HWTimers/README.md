@@ -1,7 +1,9 @@
 ## Lab #6: Hardware Counters and Timers
 
 #### Overview
-The overall goal of this assignment is to become familiar with the basic use and configuration of timers. You will learn how to configure and access the timer registers to create a simple delay function similar to the `delay()` provided by the Arduino libraries. Throughout this procedure you will apply C++ pointers to access the ATMega328P registers and you will implement your own `pinMode()`, `digitalWrite()`, and `digitalRead()` functions.
+The overall goal of this assignment is to become familiar with the basic use and configuration of timers. You will learn how to configure and access the timer registers to create a simple delay function similar to the `delay()` provided by the Arduino libraries. Throughout this procedure you will apply C++ pointers to access the ATMega328P registers and you will implement your own `pinMode()` and `digitalWrite()` functions.
+
+In the end you will toggle an LED from on to off every second using the functions that you built.
 
 **In this lab you will:**
   * Become familiar with the **Timer/Counter0** registers.
@@ -100,7 +102,7 @@ Once we set these `CS0` bits the timer starts and only stops when we clear them.
 ##### Timer0: Registers
 This section contains information about the registers you will be needing in this lab. These registers contain the flags and bits discussed above. We also discuss the ATMega328P's **Status Register** `SREG`.
 
-* **TCNT0 (TC0 Counter Value Register)**: This register gives access to the 8-bit counter for Timer0.
+* **TCNT0 (TC0 Counter Value Register)**: This register gives access to the 8-bit counter for **Timer0**.
 
 <br>
 <img src="https://github.com/xaviermerino/ECE2551-SoftHardDesign/blob/master/Lab-HWTimers/TCNT0.png?raw=true" width="400">
@@ -125,7 +127,7 @@ The `TOV0` bit is set when an overflow occurs in **Timer0**. `TOV0` is cleared b
 <img src="https://github.com/xaviermerino/ECE2551-SoftHardDesign/blob/master/Lab-HWTimers/TIFR0.png?raw=true" width="400">
 
 <br>
-* **SREG (Status Register)**: This register contains information about the result of the the most recently executed arithmetic instruction. It is used to later the flow of the program by using conditional operations. This register is not automatically saved when entering an interrupt routine and so it must be manually saved. The **Global Interrupt Enable** (I-Flag) must be set for interrupts to be enabled. 
+* **SREG (Status Register)**: This register contains information about the result of the the most recently executed arithmetic instruction. It is used to alter the flow of the program by using conditional operations. This register is not automatically saved when entering an interrupt routine and so it must be manually saved. The **Global Interrupt Enable** (I-Flag) must be set for interrupts to be enabled.
 
 <br>
 <img src="https://github.com/xaviermerino/ECE2551-SoftHardDesign/blob/master/Lab-HWTimers/SREG.png?raw=true" width="400">
@@ -133,97 +135,73 @@ The `TOV0` bit is set when an overflow occurs in **Timer0**. `TOV0` is cleared b
 <br>
 #### Getting Started
 
-1. **[Download](https://github.com/xaviermerino/ECE2551-SoftHardDesign/blob/master/Lab-2/lab2.ino?raw=true)** the starter file. It will contain the following file:
-  * `lab2.ino`
+1. **[Download](https://github.com/xaviermerino/ECE2551-SoftHardDesign/blob/master/Lab-HWTimers/starter.zip?raw=true)** the starter file. It will contain the following file:
+  * `starter.ino`
 
 2. The provided file is a template file that you can use to fill in your code.
 3. Fill in the function definitions for each of the classes' methods. You can implement your own, these are just there for reference.
 
 #### Functional Requirements
-You are required to build the circuit that makes this hardware token device possible.
-
-**When turned on for the first time the device must:**
-* Generate ten random numbers between `10000` and the limit given by `USHRT_MAX` defined in `<limits.h>`.
-* These numbers must be saved to the **EEPROM** so they can be retrieved after a **power cycle**.
-
-**After the numbers are loaded in the EEPROM the device must**:
-* Keep a timer.
-* The timer will help select an address to read from the EEPROM.
-* A new address should be selected every ten seconds.
-* The LCD should not display anything until the push button is pressed.
-* Once the button is pressed the device will get an address based on the time.
-* Once the button is pressed the LCD will display (the token will change accordingly):
-
-```
-Hardware Token
-35469
-```
-* After three seconds the LCD must should go blank.
-* The device follows this behavior until turned off.
-
+You are required to **recreate** three of the Arduino functions.
+* You must be able to set an arbitrary delay (in milliseconds) using your own function, mimicking the behavior of `delay()`.  
+* You must be able to replicate the functionality of `pinMode()` and `digitalWrite()`.
+* You must be able to turn on and off an LED attached to pin 13. Each second you must toggle the state of the LED.
 
 #### Technical Requirements
 This section will serve as a guideline of what is necessary for the program to behave correctly.
-* The token you generate randomly should be of type `unsigned short` and hold values from `10000` to `USHRT_MAX`.
-* The token is made up of **16 bits**.
 
-<br>
+You need to implement the following functions:
 
-![token](https://github.com/xaviermerino/ECE2551-SoftHardDesign/blob/master/Lab-2/token.png?raw=true)
-
-<br>
-* Each entry in the **EEPROM** can only hold 1 byte of data, therefore, you must break up the token into its first eight bits and its second eight bits. We will call the first eight bits the **high bits** and those will be bits 8-15. The **low bits** will be bits 0-7. You will save the high and low bits in the **EEPROM** and when a read is requested you must combine those two to obtain the original token.
-
-![broken](https://github.com/xaviermerino/ECE2551-SoftHardDesign/blob/master/Lab-2/tokenbreak.png?raw=true)
-
-<br>
-* Internally, your device should keep track of time. Every ten seconds it should read a different entry from the **EEPROM**. This is, every ten seconds the token will be different. Since you are only implementing ten tokens. You must wrap around to keep on showing tokens on the screen. This is, after you have read all the tokens, start from the first token saved in the **EEPROM** again.
-
-<br>
-
-![timer](https://github.com/xaviermerino/ECE2551-SoftHardDesign/blob/master/Lab-2/pattern.png?raw=true)
-
-<br>
-* Once you press the button, the device must show the current token on the screen.
-
-```
-Hardware Token
-33333
-```
-
-* After showing the token, the screen must go blank in three seconds.
-* You are free to use any available pin to connect the push button. For more information check the Arduino [Example on Buttons](https://www.arduino.cc/en/Tutorial/Button).
-
-Let's start explaining what each of the functions defined in given classes file must do.
-
-**The following functions belong to the `Eeprom` class:**
-* **Eeprom()**: Default constructor for the `Eeprom` class.
-* **byte read(unsigned int uiAddress)**: This function returns a byte of data read from the **EEPROM** at the specified address `uiAddress`. It's implementation is similar to the code snippet below.
+* **void myPinMode(uint8_t pin, Mode mode)**: You must use pointers to recreate the `pinMode()` function. This function takes a pin number (based on the Arduino scheme) and the `Mode`. An `enum` provides the different possible modes that a pin can be in. The pointers should help you choose between ports based on the pin number chosen. For instance, a the variable `ddr` points to either `DDRD` or `DDRB` depending on the chosen pin.  
 
 ```c++
-byte read(unsigned int uiAddress) {
-  // Wait for completion of previous write
-  while (EECR & (1 << EEPE));
+typedef enum {M_INPUT, M_OUTPUT, M_INPUT_PULLUP} Mode;
 
-  // Fill in with the appropriate code
+void myPinMode(uint8_t pin, Mode mode) {
+  // Depending on the pin number, ddr should point to either DDRD or DDRB
+  volatile uint8_t* ddr;
+  ...
+}
+```
 
-  return 1; // Change to return byte
+<br>
+* **void myDigitalWrite(uint8_t pin, bool turnOn)**: You must use pointers to recreate the `digitalWrite()` function. The pointers should help you choose between ports based on the pin number chosen. For instance, a the variable `port` points to either `PORTD` or `PORTB` depending on the chosen pin.  
+
+```c++
+void myDigitalWrite(uint8_t pin, bool turnOn){
+  // Depending on the pin number, port should point to either DDRD or DDRB
+  volatile uint8_t* port;
+  ...
 }
 
 ```
 
-* **void write(unsigned int uiAddress, byte data)**: This function writes a byte of data read to the **EEPROM** at the specified address `uiAddress`. It's implementation is similar to the code snippet below.
+<br>
+* **void delay_one_ms()**: This function uses **Timer0** to implement a one millisecond delay. Follow the steps below to get this function working properly:
+
+  * Choose a **prescaler** for the desired delay
+  * Disable the **I-Flag** in the `SREG`. Alternatively, save a copy of `SREG` to restore later.
+  * Set the proper value in `TCNT0`.
+  * Set **Timer0** to **Normal Mode**.
+  * Set the **prescaler** bits.
+  * Wait until the **overflow** flag `TOV0` is set.
+  * **Stop** the clock.
+  * **Clear** the `TOV0` flag by setting it.
+  * **Restore** the interrupts by setting the I-Flag in the `SREG`. Or load `SREG` from the copy you made before.
 
 ```c++
-void write(unsigned int uiAddress, byte data) {
-  // Wait for completion of previous write
-  while (EECR & (1 << EEPE));
-
-  // Fill in with the appropriate code
+void delay_one_ms(){
+  ...
 }
-
 ```
 
-**The following functions belong to the `Button` class:**
-* **Button(unsigned short pin)**: Constructor for the `Button` class.
-* **bool hasBeenPushed()**: This function returns `true` if the button has been pushed. It performs debouncing to avoid bogus readings.
+<br>
+* **void delay_generic(unsigned long ms)**: This function calls the `delay_one_ms()` function to implement a delay for an arbitrary amount of milliseconds. This function recreates the behavior of the Arduino `delay()` function.
+
+```c++
+void delay_generic(unsigned long ms){
+  ...
+  // call delay_one_ms()
+  ...
+}
+```
