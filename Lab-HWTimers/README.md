@@ -1,6 +1,6 @@
 ## Lab #6: Hardware Counters and Timers
 
-###3 Overview
+### Overview
 The overall goal of this assignment is to become familiar with the basic use and configuration of timers. You will learn how to configure and access the timer registers to create a simple delay function similar to the `delay()` provided by the Arduino libraries. Throughout this procedure you will apply C++ pointers to access the ATMega328P registers and you will implement your own `pinMode()` and `digitalWrite()` functions.
 
 In the end you will toggle an LED from on to off every second using the functions that you built.
