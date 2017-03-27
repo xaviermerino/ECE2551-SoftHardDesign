@@ -20,12 +20,14 @@ As you remember, everything that occurs in digital computers is driven by some c
 Let's see how we can relate number of pulses to time. Assume that we keep track of pulses on a 4 MHz system so that each pulse takes 1/4 MHz = 0.00025 ms. So, on the first pulse, 0.00025 ms have elapsed; on the second pulse, 0.0005 ms have elapsed, on the third pulse, 0.00075 ms have elapsed, and so on. If we keep counting up, it is clear that it would take 4,000,000 pulses to reach 1 second; 8,000,000 pulses to reach 2 seconds, and so on. Similarly, it is evident that it would take 2,000,000 pulses to reach .5 seconds; 1,000,000 pulses to reach .25 seconds, and so on. This relationship between number of pulses and time is captured in the formula below:
 
 <br>
+
 ![calc1](http://mathurl.com/zew9uos.png)
 
 <br>
 Now consider an application developed for a 4 MHz system that needs to blink an LED every 10 microseconds. To determine the number of pulses required to reach that delay we would plug in the application's values into the formula as seen below:
 
 <br>
+
 ![calc2](http://mathurl.com/jjgfdav.png)
 
 ![calc3](http://mathurl.com/jy7etc9.png)
