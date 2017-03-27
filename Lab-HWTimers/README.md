@@ -140,7 +140,7 @@ The `TOV0` bit is set when an overflow occurs in **Timer0**. `TOV0` is cleared b
 
 <br>
 
-* ** SREG (Status Register) **: This register contains information about the result of the the most recently executed arithmetic instruction. It is used to alter the flow of the program by using conditional operations. This register is not automatically saved when entering an interrupt routine and so it must be manually saved. The **Global Interrupt Enable** (I-Flag) must be set for interrupts to be enabled.
+* **SREG (Status Register)**: This register contains information about the result of the the most recently executed arithmetic instruction. It is used to alter the flow of the program by using conditional operations. This register is not automatically saved when entering an interrupt routine and so it must be manually saved. The **Global Interrupt Enable** (I-Flag) must be set for interrupts to be enabled.
 
 <br>
 
@@ -180,6 +180,7 @@ void myPinMode(uint8_t pin, Mode mode) {
 ```
 
 <br>
+
 * **void myDigitalWrite(uint8_t pin, bool turnOn)**: You must use pointers to recreate the `digitalWrite()` function. The pointers should help you choose between ports based on the pin number chosen. For instance, a the variable `port` points to either `PORTD` or `PORTB` depending on the chosen pin.  
 
 ```c++
@@ -192,6 +193,7 @@ void myDigitalWrite(uint8_t pin, bool turnOn){
 ```
 
 <br>
+
 * **void delay_one_ms()**: This function uses **Timer0** to implement a one millisecond delay. Follow the steps below to get this function working properly:
 
   * Choose a **prescaler** for the desired delay
@@ -211,6 +213,7 @@ void delay_one_ms(){
 ```
 
 <br>
+
 * **void delay_generic(unsigned long ms)**: This function calls the `delay_one_ms()` function to implement a delay for an arbitrary amount of milliseconds. This function recreates the behavior of the Arduino `delay()` function.
 
 ```c++
