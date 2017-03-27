@@ -58,6 +58,7 @@ A better solution, though, would be to make the counter overflow every 40 pulses
 <img src="https://github.com/xaviermerino/ECE2551-SoftHardDesign/blob/master/Lab-HWTimers/simpleRepresentation.png?raw=true" width="550">
 
 <br>
+
 But in order to tell the microcontroller how to use the **Timer0** we need to specify a mode first. **Timer0** has different modes. We will be using the timer in **Normal Mode**. There are other modes that you can use with this timer. The mode is set up by setting the `WGM0` bits. There are three of these identified as `WGM00`, `WGM01`, and `WGM02`.
 
 | WGM02 | WGM01 | WGM00 | Mode of Operation |
@@ -72,6 +73,7 @@ But in order to tell the microcontroller how to use the **Timer0** we need to sp
 | 1     | 1     | 1     | Fast PWM          |
 
 <br>
+
 We also need to specify what clock we are using as an input. So far we have assumed that you need to use the system clock as an input. The truth is that you can use external events or even a *slowed-down* version of the system clock. In order to *slow-down* the system clock we use a **prescaler**. A **prescaler** simply divides the system clock by a value and uses that new, *slowed-down*, signal as input. We take the new, slower, frequency and apply the formulas above to determine the number of pulses required to reach the desired time delay.
 
 In order to specify the input we set the `CS0` bits. There are three of these identified as `CS00`, `CS01`, and `CS02`.
@@ -89,6 +91,7 @@ In order to specify the input we set the `CS0` bits. There are three of these id
 | 1    | 1    | 1    | External clock on T0 pin. Clock on Rising Edge.  |
 
 <br>
+
 For your convenience, the table below lists the effective clock frequency after applying a **prescaler** to the 16 MHz clock in your Arduino.
 
 | Prescaler | Effective Clock Frequency |
@@ -99,6 +102,7 @@ For your convenience, the table below lists the effective clock frequency after 
 | 1024      | 15625 Hz                  |
 
 <br>
+
 Once we set these `CS0` bits the timer starts and only stops when we clear them.
 
 #### Timer0: Registers
@@ -107,21 +111,27 @@ This section contains information about the registers you will be needing in thi
 * **TCNT0 (TC0 Counter Value Register)**: This register gives access to the 8-bit counter for **Timer0**.
 
 <br>
+
 <img src="https://github.com/xaviermerino/ECE2551-SoftHardDesign/blob/master/Lab-HWTimers/TCNT0.png?raw=true" width="400">
 
 <br>
+
 * **TCCR0A (TC0 Control Register A)**: The `WGM00` and `WGM01` bits in this register, along with the remaining `WGM02` bit in `TCCR0B` control the operation mode of the counter.
 
 <br>
+
 <img src="https://github.com/xaviermerino/ECE2551-SoftHardDesign/blob/master/Lab-HWTimers/TCCR0A.png?raw=true" width="400">
 
 <br>
+
 * **TCCR0B (TC0 Control Register B)**: The `WGM02` bit in this register, along with the remaining `WGM01` and `WGM00` bits in `TCCR0A` control the operation mode of the counter.
 
 <br>
+
 <img src="https://github.com/xaviermerino/ECE2551-SoftHardDesign/blob/master/Lab-HWTimers/TCCR0B.png?raw=true" width="400">
 
 <br>
+
 * **TIFR0 (TC0 Interrupt Flag Register)**:
 The `TOV0` bit is set when an overflow occurs in **Timer0**. `TOV0` is cleared by writing a logic one to the flag.
 
@@ -129,9 +139,11 @@ The `TOV0` bit is set when an overflow occurs in **Timer0**. `TOV0` is cleared b
 <img src="https://github.com/xaviermerino/ECE2551-SoftHardDesign/blob/master/Lab-HWTimers/TIFR0.png?raw=true" width="400">
 
 <br>
+
 * **SREG (Status Register)**: This register contains information about the result of the the most recently executed arithmetic instruction. It is used to alter the flow of the program by using conditional operations. This register is not automatically saved when entering an interrupt routine and so it must be manually saved. The **Global Interrupt Enable** (I-Flag) must be set for interrupts to be enabled.
 
 <br>
+
 <img src="https://github.com/xaviermerino/ECE2551-SoftHardDesign/blob/master/Lab-HWTimers/SREG.png?raw=true" width="400">
 
 <br>
