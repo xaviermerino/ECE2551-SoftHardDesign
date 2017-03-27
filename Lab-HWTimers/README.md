@@ -140,13 +140,14 @@ The `TOV0` bit is set when an overflow occurs in **Timer0**. `TOV0` is cleared b
 
 <br>
 
-* **SREG (Status Register)**: This register contains information about the result of the the most recently executed arithmetic instruction. It is used to alter the flow of the program by using conditional operations. This register is not automatically saved when entering an interrupt routine and so it must be manually saved. The **Global Interrupt Enable** (I-Flag) must be set for interrupts to be enabled.
+* ** SREG (Status Register) **: This register contains information about the result of the the most recently executed arithmetic instruction. It is used to alter the flow of the program by using conditional operations. This register is not automatically saved when entering an interrupt routine and so it must be manually saved. The **Global Interrupt Enable** (I-Flag) must be set for interrupts to be enabled.
 
 <br>
 
 <img src="https://github.com/xaviermerino/ECE2551-SoftHardDesign/blob/master/Lab-HWTimers/SREG.png?raw=true" width="400">
 
 <br>
+
 ### Getting Started
 
 1. **[Download](https://github.com/xaviermerino/ECE2551-SoftHardDesign/blob/master/Lab-HWTimers/starter.zip?raw=true)** the starter file. It will contain the following file:
