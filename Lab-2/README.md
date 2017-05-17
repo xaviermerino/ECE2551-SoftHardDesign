@@ -22,11 +22,13 @@ Every computer system needs non-volatile memory; that is, memory that persists b
 | **Electrically Erasable PROM (EEPROM)** | Similar to Flash, but even though the number of writing times is limited, the limit is much higher than Flash (on the order of millions of times). Slow to write and to read, but useful for storing configuration information. Usually less than 1K bytes in size. |
 
 <br>
+
 The ATMega 328P follows a Harvard architecture, where program code and data are separated. Program code is stored in Flash. Data, on the other hand, can be found in both **SRAM** and **EEPROM** for long term storage, as seen below. The microcontroller on the Arduino Uno board has 1K bytes of EEPROM.
 
 ![block](https://github.com/xaviermerino/ECE2551-SoftHardDesign/blob/master/Lab-2/block-diagram.JPG?raw=true)
 
 <br>
+
 In this lab, we will experiment with writing and reading to and from the **EEPROM**.  
 
 The process of working with **EEPROM** in the **ATMega328p** can be easily done via three registers:
@@ -131,11 +133,13 @@ This section will serve as a guideline of what is necessary for the program to b
 ![token](https://github.com/xaviermerino/ECE2551-SoftHardDesign/blob/master/Lab-2/token.png?raw=true)
 
 <br>
+
 * Each entry in the **EEPROM** can only hold 1 byte of data, therefore, you must break up the token into its first eight bits and its second eight bits. We will call the first eight bits the **high bits** and those will be bits 8-15. The **low bits** will be bits 0-7. You will save the high and low bits in the **EEPROM** and when a read is requested you must combine those two to obtain the original token.
 
 ![broken](https://github.com/xaviermerino/ECE2551-SoftHardDesign/blob/master/Lab-2/tokenbreak.png?raw=true)
 
 <br>
+
 * Internally, your device should keep track of time. Every ten seconds it should read a different entry from the **EEPROM**. This is, every ten seconds the token will be different. Since you are only implementing ten tokens. You must wrap around to keep on showing tokens on the screen. This is, after you have read all the tokens, start from the first token saved in the **EEPROM** again.
 
 <br>
