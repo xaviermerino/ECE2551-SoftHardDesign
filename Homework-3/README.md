@@ -6,6 +6,7 @@ The overall goal of this assignment is to implement a C++ application that makes
 The functional goal is to sort the 2D array given to you. You will use **insertion sort** to perform sorting column or row wise.
 
 <br>
+
 ![overview](https://github.com/xaviermerino/ECE2551-SoftHardDesign/blob/master/Homework-3/overview.png?raw=true)
 
 <br>
@@ -21,6 +22,7 @@ The following requirements are an overview of what is expected of you in this as
 * Insertion sort is a simple sorting algorithm with **time complexity O(n^2)**. It is efficient with small data sets and as such it is a good match for our assignment. It also sorts **in-place** which means it only requires **O(1) of additional memory space**.
 
 <br>
+
 The following snippet is **pseudocode** for the insertion sort algorithm:
 
 ```
@@ -114,9 +116,11 @@ void* address = getCharacterAddress(first, 0, 1);
 The code snippet performs the following:
 
 <br>
+
 ![getcharacteraddress](https://github.com/xaviermerino/ECE2551-SoftHardDesign/blob/master/Homework-3/getCharacterAddress.png?raw=true)
 
 <br>
+
 * **void getRow(char array[][arraySize], int row, char* resultArray)**: This function takes as an argument a 2D array. The size of the array is fixed by `arraySize`. It also takes a `row` parameter that allows you to tap into that specific row in the provided `array`. One of the nice things about pointers is that they allow functions to alter variables outside of their scope. To do this, you pass a pointer and so you allow that function to read and write to the data. This function takes a third argument, `char* resultArray`, so you can modify `resultArray` from the function itself. Use `resultArray` to hold the values in the extracted row. **You MUST use pointer notation.**
 
 ```c++
@@ -141,9 +145,11 @@ getRow(first, rowNumber, row);
 The code snippet performs the following:
 
 <br>
+
 ![getRow](https://github.com/xaviermerino/ECE2551-SoftHardDesign/blob/master/Homework-3/getRow.png?raw=true)
 
 <br>
+
 * **void getColumn(char array[][arraySize], int column, char* resultArray)**: This function takes as an argument a 2D array. The size of the array is fixed by `arraySize`. It also takes a `row` parameter that allows you to tap into that specific row in the provided `array`. This function takes a third argument, `char* resultArray`, so you can modify `resultArray` from the function itself. Use `resultArray` to hold the values in the extracted column. **You MUST use pointer notation.**
 
 ```c++
@@ -168,9 +174,11 @@ getColumn(first, columnNumber, column);
 The code snippet performs the following:
 
 <br>
+
 ![getRow](https://github.com/xaviermerino/ECE2551-SoftHardDesign/blob/master/Homework-3/getColumn.png?raw=true)
 
 <br>
+
 * **void insertionSort(char data[], int size)**: This function takes as an argument an array of type `char`. It also takes as an argument the `size` or length of the array. This function implements **insertion sort** which is a simple (quadratic) sorting algorithm. It is not the most efficient when it comes to performance but is efficient enough for small data sets. This function should perform in-place sorting. **It is acceptable not to use pointer notation here.**
 
 ```c++
@@ -182,9 +190,11 @@ insertionSort(test, 4);
 The code snippet performs the following:
 
 <br>
+
 ![insertionSort](https://github.com/xaviermerino/ECE2551-SoftHardDesign/blob/master/Homework-3/insertionSort.png?raw=true)
 
 <br>
+
 * **void sortRow(char array[][arraySize], int row)**: This function takes as an argument a 2D array. It also takes a `row` as an argument that specifies which row should be sorted. The sorting algorithm should be insertion sort. **It is acceptable not to use pointer notation here.**
 
 ```c++
@@ -205,9 +215,11 @@ sortRow(first, 0);
 The code snippet performs the following:
 
 <br>
+
 ![sortRow](https://github.com/xaviermerino/ECE2551-SoftHardDesign/blob/master/Homework-3/sortRow.png?raw=true)
 
 <br>
+
 * **void sortColumn(char array[][arraySize], int column)**: This function takes as an argument a 2D array. It also takes a `column` as an argument that specifies which column should be sorted. The sorting algorithm should be insertion sort. **It is acceptable not to use pointer notation here.**
 
 ```c++
@@ -228,9 +240,11 @@ sortColumn(first, 0);
 The code snippet performs the following:
 
 <br>
+
 ![sortColumn](https://github.com/xaviermerino/ECE2551-SoftHardDesign/blob/master/Homework-3/sortColumn.png?raw=true)
 
 <br>
+
 #### Self-Grading and Feedback
 Once you have implemented all of the functions your goal is to pass all the tests and obtain this output:
 
