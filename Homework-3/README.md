@@ -34,7 +34,9 @@ for i ← 1 to length(A)-1
     end while
 end for
 ```
+
 <br>
+
 Which behaves as presented below:
 
 ![insertionSortGIF](https://upload.wikimedia.org/wikipedia/commons/0/0f/Insertion-sort-example-300px.gif)
@@ -88,9 +90,11 @@ getCharacter(first, 0, 0);
 The code snippet performs the following:
 
 <br>
+
 ![getcharacter](https://github.com/xaviermerino/ECE2551-SoftHardDesign/blob/master/Homework-3/getCharacter.png?raw=true)
 
 <br>
+
 * **char* getCharacterAddress(char array[][arraySize], int row, int column)**: This function takes as an argument a 2D array. The size of the array is fixed by `arraySize`. It also takes a `row` and a `column` that allows you to tap into that specific location in the provided `array`. You must return a character pointer that points to the address of the character. **You MUST use pointer notation.**
 
 ```c++
