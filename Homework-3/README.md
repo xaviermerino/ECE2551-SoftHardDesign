@@ -1,4 +1,4 @@
-## Assignment #3: Pointer Arithmetic and Sorting
+## Assignment: Pointer Arithmetic and Sorting
 
 #### Overview
 The overall goal of this assignment is to implement a C++ application that makes use of pointers to access data contained in arrays. Throughout this assignment you will refresh your knowledge of control structures, functions, one and two dimensional arrays, and pointer arithmetic. As a bonus, you will be implementing the insertion sort to sort the data in the given array.
