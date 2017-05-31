@@ -157,7 +157,7 @@ The code snippet performs the following:
 
 <br>
 
-* **void getColumn(char array[][arraySize], int column, char* resultArray)**: This function takes as an argument a 2D array. The size of the array is fixed by `arraySize`. It also takes a `row` parameter that allows you to tap into that specific row in the provided `array`. This function takes a third argument, `char* resultArray`, so you can modify `resultArray` from the function itself. Use `resultArray` to hold the values in the extracted column. **You MUST use pointer notation.**
+* **void getColumn(char array[][arraySize], int column, char&ast; resultArray)**: This function takes as an argument a 2D array. The size of the array is fixed by `arraySize`. It also takes a `row` parameter that allows you to tap into that specific row in the provided `array`. This function takes a third argument, `char* resultArray`, so you can modify `resultArray` from the function itself. Use `resultArray` to hold the values in the extracted column. **You MUST use pointer notation.**
 
 ```c++
 const unsigned int rows = 4;
