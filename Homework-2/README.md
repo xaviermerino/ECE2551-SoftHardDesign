@@ -103,9 +103,11 @@ Matrix sample(data);
 The sample code above will create the `Matrix` object below.
 
 <br>
+
 ![add](https://github.com/xaviermerino/ECE2551-SoftHardDesign/blob/master/Homework-2/matrix2x2.png?raw=true)
 
 <br>
+
 * **Status add(const Matrix& other)**: Function that takes as an argument a matrix `other` and adds it, element-wise, to the calling object. It returns a value of type `Status` (defined previously). It should return `NoError` if the addition was carried out successfully or `DimensionError` if the matrices' dimensions do not match.
 
 ```c++
@@ -147,9 +149,11 @@ one.add(two);
 The sample code above will result in the matrix addition as pictured below.
 
 <br>
+
 ![add](https://github.com/xaviermerino/ECE2551-SoftHardDesign/blob/master/Homework-2/add.png?raw=true)
 
 <br>
+
 * **Status subtract(const Matrix& other)**: Function that takes as an argument a matrix `other` and subtracts it, element-wise, from the calling object. It returns a value of type `Status` (defined previously). It should return `NoError` if the subtraction was carried out successfully or `DimensionError` if the matrices' dimensions do not match.
 
 ```c++
@@ -191,9 +195,11 @@ one.subtract(two);
 The sample code above will result in the matrix subtraction as pictured below.
 
 <br>
+
 ![subtract](https://github.com/xaviermerino/ECE2551-SoftHardDesign/blob/master/Homework-2/subtract.png?raw=true)
 
 <br>
+
 * **Status multiply(const Matrix& other)**: Function that takes as an argument a matrix `other` and performs a matrix product with the calling object. It must update the `matrix` data member to reflect the new dimension of the resulting matrix. The function returns a value of type `Status` (defined previously). It should return `NoError` if the matrix product was carried out successfully or `DimensionError` if the product for those two matrices is undefined.
 
 ```c++
@@ -230,9 +236,11 @@ one.multiply(two);
 The sample code above will result in the matrix multiplication as pictured below.
 
 <br>
+
 ![multiply](https://github.com/xaviermerino/ECE2551-SoftHardDesign/blob/master/Homework-2/multiply.png?raw=true)
 
 <br>
+
 * **Status divide(double scalar)**: Function that takes as an argument a value of type `double` and performs an element-wise division on the calling object. The function returns a value of type `Status`. It should return `NoError` if the division was carried out successfully or `DivideByZeroError` if a division by zero was attempted.
 
 ```c++
@@ -260,9 +268,11 @@ one.divide(2.0);
 The sample code above will result in the matrix division as pictured below.
 
 <br>
+
 ![divide](https://github.com/xaviermerino/ECE2551-SoftHardDesign/blob/master/Homework-2/divide.png?raw=true)
 
 <br>
+
 * **void multiply(double scalar)**: Function that takes as an argument a value of type `double` and performs an element-wise multiplication on the calling object.
 
 ```c++
@@ -290,9 +300,11 @@ one.multiply(2.0);
 The sample code above will result in the matrix multiplication as pictured below.
 
 <br>
+
 ![divide](https://github.com/xaviermerino/ECE2551-SoftHardDesign/blob/master/Homework-2/multiplyScalar.png?raw=true)
 
 <br>
+
 * **void transpose()**: The transpose of a matrix is a new matrix whose rows are the columns of the original. This function updates the `matrix` data member with its transpose.
 
 ```c++
@@ -316,9 +328,11 @@ one.transpose();
 The sample code above will result in the transpose of the calling object as pictured below.
 
 <br>
+
 ![transpose](https://github.com/xaviermerino/ECE2551-SoftHardDesign/blob/master/Homework-2/Transpose.png?raw=true)
 
 <br>
+
 * **void zero()**: This function updates the all of the `matrix` data member elements to zero.
 
 ```c++
@@ -342,9 +356,11 @@ one.zero();
 The sample code above will result in the calling object being filled with zeroes.
 
 <br>
+
 ![zero](https://github.com/xaviermerino/ECE2551-SoftHardDesign/blob/master/Homework-2/Zero.png?raw=true)
 
 <br>
+
 * **void show() const**: This function prints the representation of the calling object to the console. The output must be formatted to be aligned.
 
 ```c++
@@ -370,9 +386,11 @@ double number = sampleMatrix.getAt(1,1);
 The sample code above will result in `number` holding the value 3. You can see this in the picture below.
 
 <br>
+
 ![zero](https://github.com/xaviermerino/ECE2551-SoftHardDesign/blob/master/Homework-2/getAt.png?raw=true)
 
 <br>
+
 * **int getRowSize() const**: This function returns the number of rows in the `matrix` data member. This information is provided by `rowSize`. It basically serves as a get method for the `rowSize` **private** data member.
 
 ```c++
@@ -406,9 +424,11 @@ sampleMatrix.getMinor(0,0);
 The sample code above will result in generating a submatrix based on the calling object. You can see this in the picture below.
 
 <br>
+
 ![zero](https://github.com/xaviermerino/ECE2551-SoftHardDesign/blob/master/Homework-2/minor.png?raw=true)
 
 <br>
+
 **The following function belongs to the `HelpingFunctions` class.**
 * **double dotProduct(const std::vector\<double\>& x, const std::vector\<double\>& y)**: This is a static method that performs the a dot product between two given vectors. If the vectors are not the same size return `NaN`, otherwise return the appropriate result.
 
