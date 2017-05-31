@@ -87,6 +87,7 @@ getCharacter(first, 0, 0);
 ```
 
 <br>
+
 The code snippet performs the following:
 
 <br>
@@ -117,6 +118,7 @@ void* address = getCharacterAddress(first, 0, 1);
 ```
 
 <br>
+
 The code snippet performs the following:
 
 <br>
@@ -146,6 +148,7 @@ getRow(first, rowNumber, row);
 ```
 
 <br>
+
 The code snippet performs the following:
 
 <br>
@@ -175,6 +178,7 @@ getColumn(first, columnNumber, column);
 ```
 
 <br>
+
 The code snippet performs the following:
 
 <br>
@@ -191,6 +195,7 @@ insertionSort(test, 4);
 ```
 
 <br>
+
 The code snippet performs the following:
 
 <br>
@@ -216,6 +221,7 @@ sortRow(first, 0);
 ```
 
 <br>
+
 The code snippet performs the following:
 
 <br>
@@ -241,6 +247,7 @@ sortColumn(first, 0);
 ```
 
 <br>
+
 The code snippet performs the following:
 
 <br>
