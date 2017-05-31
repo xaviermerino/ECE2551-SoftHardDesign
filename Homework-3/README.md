@@ -96,7 +96,7 @@ The code snippet performs the following:
 
 <br>
 
-* **char* getCharacterAddress(char array[][arraySize], int row, int column)**: This function takes as an argument a 2D array. The size of the array is fixed by `arraySize`. It also takes a `row` and a `column` that allows you to tap into that specific location in the provided `array`. You must return a character pointer that points to the address of the character. **You MUST use pointer notation.**
+* **char&ast; getCharacterAddress(char array[][arraySize], int row, int column)**: This function takes as an argument a 2D array. The size of the array is fixed by `arraySize`. It also takes a `row` and a `column` that allows you to tap into that specific location in the provided `array`. You must return a character pointer that points to the address of the character. **You MUST use pointer notation.**
 
 ```c++
 const unsigned int rows = 4;
@@ -127,7 +127,7 @@ The code snippet performs the following:
 
 <br>
 
-* **void getRow(char array[][arraySize], int row, char* resultArray)**: This function takes as an argument a 2D array. The size of the array is fixed by `arraySize`. It also takes a `row` parameter that allows you to tap into that specific row in the provided `array`. One of the nice things about pointers is that they allow functions to alter variables outside of their scope. To do this, you pass a pointer and so you allow that function to read and write to the data. This function takes a third argument, `char* resultArray`, so you can modify `resultArray` from the function itself. Use `resultArray` to hold the values in the extracted row. **You MUST use pointer notation.**
+* **void getRow(char array[][arraySize], int row, char&ast; resultArray)**: This function takes as an argument a 2D array. The size of the array is fixed by `arraySize`. It also takes a `row` parameter that allows you to tap into that specific row in the provided `array`. One of the nice things about pointers is that they allow functions to alter variables outside of their scope. To do this, you pass a pointer and so you allow that function to read and write to the data. This function takes a third argument, `char* resultArray`, so you can modify `resultArray` from the function itself. Use `resultArray` to hold the values in the extracted row. **You MUST use pointer notation.**
 
 ```c++
 const unsigned int rows = 4;
