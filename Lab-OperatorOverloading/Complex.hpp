@@ -17,10 +17,24 @@ public:
     double getImaginary() const;
     Complex& setReal(const double re);
     Complex& setImaginary(const double im);
+    Complex conjugate() const;
+    
     Complex operator+(const Complex& number) const;
+    Complex operator+(const double number) const;
+    friend Complex operator+(const double number, const Complex& complex);
+    
     Complex operator-(const Complex& number) const;
+    Complex operator-(const double number) const;
+    friend Complex operator-(const double number, const Complex& complex);
+    
     Complex operator*(const Complex& number) const;
+    Complex operator*(const double number) const;
+    friend Complex operator*(const double number, const Complex& complex);
+    
     Complex operator/(const Complex& number) const;
+    Complex operator/(const double number) const;
+    friend Complex operator/(const double number, const Complex& complex);
+    
     std::string toPolarForm() const;
     friend std::ostream& operator<<(std::ostream&, const Complex&);
     
@@ -28,9 +42,13 @@ private:
     double re;
     double im;
     Complex add(const Complex& number) const;
+    Complex add(const double number) const;
     Complex subtract(const Complex& number) const;
+    Complex subtract(const double number) const;
     Complex multiply(const Complex& number) const;
+    Complex multiply(const double number) const;
     Complex divide(const Complex& number) const;
+    Complex divide(const double number) const;
 };
 
 #endif /* Complex_hpp */
