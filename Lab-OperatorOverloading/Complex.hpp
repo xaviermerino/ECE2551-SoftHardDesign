@@ -18,24 +18,18 @@ public:
     Complex& setReal(const double re);
     Complex& setImaginary(const double im);
     Complex conjugate() const;
-    
     Complex operator+(const Complex& number) const;
     Complex operator+(const double number) const;
     friend Complex operator+(const double number, const Complex& complex);
-    
     Complex operator-(const Complex& number) const;
     Complex operator-(const double number) const;
     friend Complex operator-(const double number, const Complex& complex);
-    
     Complex operator*(const Complex& number) const;
     Complex operator*(const double number) const;
     friend Complex operator*(const double number, const Complex& complex);
-    
     Complex operator/(const Complex& number) const;
     Complex operator/(const double number) const;
     friend Complex operator/(const double number, const Complex& complex);
-    
-    std::string toPolarForm() const;
     friend std::ostream& operator<<(std::ostream&, const Complex&);
     
 private:
