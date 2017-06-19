@@ -9,7 +9,7 @@ In this lab you will become familiar with **operator overloading** while rehears
   * Sort objects using **bubble sort**.
   * Make use of **function templates** to sort objects.
   * Make use of **cascading function calls** in your classes.
-  * Overload operator behavior in your classes.
+  * **Overload** operator behavior in your classes.
   * Apply **formatting** rules to console output.
 
 ### Lab Task #1
@@ -79,10 +79,23 @@ Name: Xavier     GPA: 3.9
 ```
 
 #### Lab Task #1 Example
-
 After your `Student` class is implemented you must replicate the behavior of the program shown below. Don't forget to use an `array` to store the instances. You must create a function template to implement **bubble sort**. This template will be used to sort the array.
 
 [![asciicast](https://asciinema.org/a/qCrXINJXmWdMHOdI9cBceaKCm.png)](https://asciinema.org/a/qCrXINJXmWdMHOdI9cBceaKCm)
 
+When you are done, show your work to your TA for credit.
+
 ### Lab Task #2
-This task consist of creating a simple student roster. In order to accomplish this, you must define and implement a `Student` class. You will use this class to declare an array that is able to hold five instances of the `Student` class.
+This task consist of completing the implementation of the `Complex` class and a quadratic equation solver. The `Complex` class is designed to handle **complex numbers**. It allows adding, subtracting, multiplying, and dividing complex numbers.
+
+In order to start with this task download the class definition [here](https://github.com/xaviermerino/ECE2551-SoftHardDesign/blob/master/Lab-OperatorOverloading/Complex.hpp?raw=true).
+
+After you are done with the implementation of the `Complex` class you must write code to solve any type of quadratic equation. You must be able to obtain all the possible solutions. Remember that solutions can be complex conjugates, repeated real numbers, or distinct real numbers.
+
+You must recreate the behavior of the example provided below.
+
+#### Lab Task #2 Example
+
+[![asciicast](https://asciinema.org/a/LGc1NLGD9dEHui1T2KszOMXF3.png)](https://asciinema.org/a/LGc1NLGD9dEHui1T2KszOMXF3)
+
+When you are done, show your work to your TA for credit.
