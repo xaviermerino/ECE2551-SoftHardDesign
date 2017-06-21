@@ -4,9 +4,11 @@
 The overall goal of this assignment is to implement a C++ application that mimics some of Netflix's functionality. This application will store movies and keep track of the year they were released, their rating and their ranking. In this assignment you will refresh your knowledge of control structures, functions, pointers, sorting, dynamic memory management, operator overloading, and exceptions. Additionally, you will be implementing your own **DoublyLinkedList** which will be a subset of the **C++ STL list**. After completion you should feel more comfortable with allocating memory on the heap to create more complex data structures. Specifically, you will learn how to link different objects in the heap together and to bi-directionally traverse through these objects in memory.
 
 <br>
+
 ![overview](https://github.com/xaviermerino/ECE2551-SoftHardDesign/blob/master/Homework-4/list.png?raw=true)
 
 <br>
+
 In the end, you will be storing movie information in this list and sorting it.
 
 #### Functional Requirements
@@ -25,6 +27,7 @@ The following requirements are an overview of what is expected of you in this as
 * You must be able to sort the elements in the list using **Insertion Sort**.
 
 <br>
+
 The following snippet is **pseudocode** for the insertion sort algorithm:
 
 ```
@@ -36,7 +39,9 @@ for i ← 1 to length(A)-1
     end while
 end for
 ```
+
 <br>
+
 Which behaves as presented below:
 
 ![insertionSortGIF](https://upload.wikimedia.org/wikipedia/commons/0/0f/Insertion-sort-example-300px.gif)
