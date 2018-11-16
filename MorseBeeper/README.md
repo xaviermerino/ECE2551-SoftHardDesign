@@ -15,16 +15,28 @@ The overall goal of this project is to build a beeper (or pager). A beeper is a 
 * Use **inheritance** to extend Arduino’s classes.
 * Use **pointers** to handle dynamic memory allocation.
 
-#### nRF2401L+
+#### Entropy Class
+If we compare our beeper to a cellphone you'll agree that we need to assign it a phone number. Imagine that your phone number is `321-123-4567`. If you were not guaranteed that this number belonged **only** to you, then someone else (who shares your number) could be getting your calls and texts. 
+
+![alicebob](https://raw.githubusercontent.com/xaviermerino/ECE2551-SoftHardDesign/master/MorseBeeper/alicebob.png)
+
+We use the term **universally unique identifier (UUID)** to refer to a number that is used to uniquely identify some entity. The probability that a UUID will be duplicated is not zero but it is low enough to be considered negligible.
+
+We are going to use the `Entropy` class to generate a sequence of random bytes using the `Watchdog Timer`'s natural jitter. These bytes will become our unique identifier. You can find the class [here](https://sites.google.com/site/astudyofentropy/file-cabinet/Entropy-v1.0.2.zip?attredirects=0&d=1).
+
+
+#### NR24 Class
 The `nRF24L01+` is a single chip radio transceiver that operates in the 2.4 - 2.5 GHz band. It features ultra low power consumption and speeds up to 2 Mbps. We need to use a microcontroller to configure this radio through a Serial Peripheral Interface (SPI). You can download the datasheet [here](https://www.sparkfun.com/datasheets/Components/SMD/nRF24L01Pluss_Preliminary_Product_Specification_v1_0.pdf).
+
+![nrf](https://raw.githubusercontent.com/xaviermerino/ECE2551-SoftHardDesign/master/MorseBeeper/nrf24l01%2B.png){:class="img-responsive"}
 
 The `nRF24L01+` implements the concept of data pipes. Pipes are logical channels in the physical RF channel. Each pipe is assigned its own physical address for subsequent write or read operations. Each address is 40-bit long. This radio is able to write data to one pipe or to listen for data from up to six pipes. 
 
-Imagine that your phone number is `321-123-4567`. If you were not guaranteed that this number belonged **only** to you, then someone else (who shares your number) could be getting your calls and texts. For this same reason, it is important to ensure that the address that you assign to the radio's receiving data pipe is unique. 
 
-We use the term **universally unique identifier (UUID)** to refer to a number that is used to uniquely identify some entity. The probability that a UUID will be duplicated is not zero but it is low enough to be considered negligible. We need to generate a 40-bit UUID to assign to our radio's receiving data pipe to minimize the chances of two radios having the same address during lab. 
+Diagram 
 
-We are going to use the `Entropy` class to generate random bytes using the `Watchdog Timer`'s natural jitter. You can find the class [here](https://sites.google.com/site/astudyofentropy/file-cabinet/Entropy-v1.0.2.zip?attredirects=0&d=1).
+
+We need to generate a 40-bit UUID to assign to our radio's receiving data pipe to minimize the chances of two radios having the same address during lab. It is important to ensure that the address that you assign to the radio's receiving data pipe is unique. 
 
 We will use the [`NR24` library](https://github.com/nRF24/RF24) to control the radio. Documentation for the library can be found [here](http://tmrh20.github.io/RF24/classRF24.html).
 
@@ -77,18 +89,15 @@ You will be extending this class using **inheritance** to create an `LCDKeypad` 
 * Extend the `LiquidCrystal` class.
 * Define the following `enum` to make your code more readable:
 
-```
+```cpp
 typedef enum {LEFT, RIGHT, UP, DOWN, SELECT, NONE} Button;
 ```
 
 * Implement **debouncing** for the analog input wired at pin `A0`. Define and implement the function `getButtonPress()` which returns the button that was pressed. The function prototype is provided below.
 
-```
+```cpp
 Button getButtonPress();
 ```
-
-
-
 
 #### Memory Class
 In embedded systems where no disk drive exists, non-volatile memory is typically a variant of Read-Only Memory (ROM). The **ATMega328P** follows a Harvard architecture, where program code and data are separated. Program code is stored in Flash. Data, on the other hand, can be found in both **SRAM** and **EEPROM**. The microcontroller on the Arduino Uno board has 1KiB of EEPROM memory.
@@ -291,7 +300,7 @@ A `Message` object stores the UUID of the sender and the receiver, alongside wit
 
 A template is provided below.
 
-```c++
+```cpp
 class Message {
   public:
     Message();
