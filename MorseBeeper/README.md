@@ -28,13 +28,11 @@ We are going to use the `Entropy` class to generate a sequence of random bytes u
 #### NR24 Class
 The `nRF24L01+` is a single chip radio transceiver that operates in the 2.4 - 2.5 GHz band. It features ultra low power consumption and speeds up to 2 Mbps. We need to use a microcontroller to configure this radio through a Serial Peripheral Interface (SPI). You can download the datasheet [here](https://www.sparkfun.com/datasheets/Components/SMD/nRF24L01Pluss_Preliminary_Product_Specification_v1_0.pdf).
 
-![nrf](https://raw.githubusercontent.com/xaviermerino/ECE2551-SoftHardDesign/master/MorseBeeper/nrf24l01%2B.png){:class="img-responsive"}
+![nrf](https://raw.githubusercontent.com/xaviermerino/ECE2551-SoftHardDesign/master/MorseBeeper/nrf24l01%2B.png)
 
 The `nRF24L01+` implements the concept of data pipes. Pipes are logical channels in the physical RF channel. Each pipe is assigned its own physical address for subsequent write or read operations. Each address is 40-bit long. This radio is able to write data to one pipe or to listen for data from up to six pipes. 
 
-
-Diagram 
-
+![pipes](https://raw.githubusercontent.com/xaviermerino/ECE2551-SoftHardDesign/master/MorseBeeper/multiceiver.png)
 
 We need to generate a 40-bit UUID to assign to our radio's receiving data pipe to minimize the chances of two radios having the same address during lab. It is important to ensure that the address that you assign to the radio's receiving data pipe is unique. 
 
@@ -58,7 +56,7 @@ The LCD library, [`LiquidCrystal`](https://www.arduino.cc/en/Reference/LiquidCry
 
 The LCD Keypad Shield provided looks like this:
 
-![lcdkeypad](https://raw.githubusercontent.com/xaviermerino/ECE2551-SoftHardDesign/master/MorseBeeper/lcdkeypadshield.png)
+![lcdkeypad](https://raw.githubusercontent.com/xaviermerino/ECE2551-SoftHardDesign/master/MorseBeeper/lcdkeypadpins.png)
 
 The following table describes which pins are used by the shield.
 
@@ -82,6 +80,8 @@ From the picture above you can see that the shield is equipped with the followin
 * Reset
 
 These buttons (with the exception of the reset button) are wired to pin `A0` using a **voltage divider**. The Arduino reads the value at the pin and provides a number ranging from `0 - 1023` corresponding to the input voltage. The value read depends on which button was pressed. A portion of the schematic is presented below. 
+
+![lcdkeypad](https://raw.githubusercontent.com/xaviermerino/ECE2551-SoftHardDesign/master/MorseBeeper/lcdvoltagedivider.png)
 
 The resistances used in your shield might vary depending on the manufacturer. You will need this information when calculating the expected value for a button press. Alternatively, you can obtain this information with a multimeter or by reading the value at the pin when a button is pressed. The complete schematic can be found [here](http://image.dfrobot.com/image/data/DFR0009/LCDKeypad%20Shield%20V1.0%20SCH.pdf). 
 
