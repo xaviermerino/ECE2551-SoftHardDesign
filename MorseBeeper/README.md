@@ -26,9 +26,9 @@ We are going to use the `Entropy` class to generate a sequence of random bytes u
 
 
 #### NR24 Class
-The `nRF24L01+` is a single chip radio transceiver that operates in the 2.4 - 2.5 GHz band. It features ultra low power consumption and speeds up to 2 Mbps. We need to use a microcontroller to configure this radio through a Serial Peripheral Interface (SPI). You can download the datasheet [here](https://www.sparkfun.com/datasheets/Components/SMD/nRF24L01Pluss_Preliminary_Product_Specification_v1_0.pdf).
+The `nRF24L01+` is a single chip radio transceiver that operates in the 2.4 - 2.5 GHz band. It features ultra low power consumption and speeds up to 2 Mbps. We need to use a microcontroller to configure this radio through a **Serial Peripheral Interface (SPI)**. You can download the datasheet [here](https://www.sparkfun.com/datasheets/Components/SMD/nRF24L01Pluss_Preliminary_Product_Specification_v1_0.pdf).
 
-![nrf](https://raw.githubusercontent.com/xaviermerino/ECE2551-SoftHardDesign/master/MorseBeeper/nrf24l01%2B.png)
+![nrf](https://raw.githubusercontent.com/xaviermerino/ECE2551-SoftHardDesign/master/MorseBeeper/nrf.png)
 
 The `nRF24L01+` implements the concept of data pipes. Pipes are logical channels in the physical RF channel. Each pipe is assigned its own physical address for subsequent write or read operations. Each address is 40-bit long. This radio is able to write data to one pipe or to listen for data from up to six pipes. 
 
@@ -60,28 +60,25 @@ The LCD Keypad Shield provided looks like this:
 
 The following table describes which pins are used by the shield.
 
-| Arduino Pin 	| Description     	|
-|-------------	|-----------------	|
-| A0          	| Buttons         	|
-| 4           	| LCD DB4         	|
-| 5           	| LCD DB5         	|
-| 6           	| LCD DB6         	|
-| 7           	| LCD DB7         	|
-| 8           	| LCD RS          	|
-| 9           	| LCD Enable      	|
-| 10          	| Backlit Control 	|
+|  Pin 	| Description     	|  Pin  | Description |
+|-------------	|-----------------	| -------------|---|
+| A0          	| Buttons         	| 7  | LCD DB7 |      
+| 4           	| LCD DB4         	| 8  | LCD RS  |
+| 5           	| LCD DB5         	| 9  | LCD Enable |    
+| 6           	| LCD DB6         	| 10 | Backlight Control |  
+
 
 From the picture above you can see that the shield is equipped with the following buttons:
 * Select
 * Left
-* Right
 * Up
 * Down
+* Right
 * Reset
 
 These buttons (with the exception of the reset button) are wired to pin `A0` using a **voltage divider**. The Arduino reads the value at the pin and provides a number ranging from `0 - 1023` corresponding to the input voltage. The value read depends on which button was pressed. A portion of the schematic is presented below. 
 
-![lcdkeypad](https://raw.githubusercontent.com/xaviermerino/ECE2551-SoftHardDesign/master/MorseBeeper/lcdvoltagedivider.png)
+![lcdkeypad](https://raw.githubusercontent.com/xaviermerino/ECE2551-SoftHardDesign/master/MorseBeeper/voltagedivider.png)
 
 The resistances used in your shield might vary depending on the manufacturer. You will need this information when calculating the expected value for a button press. Alternatively, you can obtain this information with a multimeter or by reading the value at the pin when a button is pressed. The complete schematic can be found [here](http://image.dfrobot.com/image/data/DFR0009/LCDKeypad%20Shield%20V1.0%20SCH.pdf). 
 
@@ -294,7 +291,7 @@ A `Message` object stores the UUID of the sender and the receiver, alongside wit
 
 2. **Receivers's UUID:** The receiver's 40-bit UUID. Used to verify that message was received by the intended party.
 
-3. **Payload:** The payload consists of morse code messages that may vary in size. Their size cannot exceed 16 characters (since that's the maximum amount we can display in the LCD screen). Morse code uses the `'.'` and the `'-'` symbols and we will represent these with zeroes and ones respectively. This allows us to represent each character with a bit instead of a byte. We need 2 bytes to represent up to 16 characters.
+3. **Payload:** The payload consists of morse code messages that may vary in size. Their size cannot exceed 16 characters (since that's the maximum amount we can display on the LCD screen). Morse code uses the **`.`** and the **`-`** symbols and we will represent these with zeroes and ones respectively. This allows us to represent each character with a bit instead of a byte. We need 2 bytes to represent up to 16 characters.
 
 4. **Payload Length:** Since a message can vary in length, the payload length tells us how many bits are valid to be interpreted as part of the message. We use 1 byte to store the payload's length.
 
