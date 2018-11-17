@@ -82,7 +82,7 @@ These buttons (with the exception of the reset button) are wired to pin `A0` usi
 
 The resistances used in your shield might vary depending on the manufacturer. You will need this information when calculating the expected value for a button press. For instance, when button `UP` is pressed, the voltage at `Analog Pin 0` can be found using **Ohm's law**.
 
-$$\int_{-\infty}^\infty e^{-x^2} = \sqrt{\pi}$$
+![lcdkeypad](https://raw.githubusercontent.com/xaviermerino/ECE2551-SoftHardDesign/master/MorseBeeper/ohmslaw.png)
 
 Alternatively, you can obtain this information with a multimeter or by reading the value at the pin when a button is pressed. The complete schematic can be found [here](http://image.dfrobot.com/image/data/DFR0009/LCDKeypad%20Shield%20V1.0%20SCH.pdf). 
 
