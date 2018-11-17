@@ -1,10 +1,9 @@
 ## Morse Beeper
 
 #### Overview
-The overall goal of this project is to build a beeper (or pager). A beeper is a wireless communication device that receives and sends messages to others using its internal transceiver. In this project, we design and prototype a beeper that sends and receives Morse code. 
+A beeper is a wireless communication device that receives and sends messages to others using its internal transceiver. In this project, we design and prototype a device that resembles a beeper and is able to store contacts, send, and receive morse code messages. This project involves interfacing with an LCD screen, a radio module, the ATMega328P EEPROM, and a buzzer. We also design and implement an easy to navigate user interface in a constrained 16x2 screen while managing external interrupts and handling data storage. In the end, all devices that follow this guideline should be able to communicate as described in this document.
 
 ![beeper](https://raw.githubusercontent.com/xaviermerino/ECE2551-SoftHardDesign/master/MorseBeeper/beeper.png)
-
 
 **What you will need:**
 * Arduino LCD Keypad Shield
@@ -117,53 +116,53 @@ You will be using the EEPROM to store configuration information, contacts, and m
 
 | Address       	| Value          	| Purpose                               	|
 |---------------	|----------------	|---------------------------------------	|
-| 0x000 - 0x002 	| 0xC0FFEE       	| Initialization Flag                   	|
-| 0x003 - 0x017 	| Contact Object 	| Node's Contact: UUID and Name                  	|
-| 0x018 - 0x019 	| 0xFACE         	| Contact List Flag                     	|
-| 0x020         	| Counter        	| Number of Contacts                    	|
-| 0x021 - 0x035 	| Contact Object 	| Contact #1: UUID and Name             	|
-| 0x036 - 0x050 	| Contact Object 	| Contact #2: UUID and Name             	|
-| 0x051 - 0x065 	| Contact Object 	| Contact #3: UUID and Name             	|
-| 0x066 - 0x080 	| Contact Object 	| Contact #4: UUID and Name             	|
-| 0x081 - 0x095 	| Contact Object 	| Contact #5: UUID and Name             	|
-| 0x096 - 0x110 	| Contact Object 	| Contact #6: UUID and Name             	|
-| 0x111 - 0x125 	| Contact Object 	| Contact #7: UUID and Name             	|
-| 0x126 - 0x140 	| Contact Object 	| Contact #8: UUID and Name             	|
-| 0x141 - 0x155 	| Contact Object 	| Contact #9: UUID and Name             	|
-| 0x156 - 0x170 	| Contact Object 	| Contact #10: UUID and Name            	|
-| 0x171 - 0x172 	| 0xCA11         	| Message List Flag                     	|
-| 0x173         	| Counter        	| Number of Messages                    	|
-| 0x174 - 0x186 	| Message Object 	| Message #1                            	|
-| 0x187 - 0x199 	| Message Object 	| Message #2                            	|
-| 0x200 - 0x212 	| Message Object 	| Message #3                            	|
-| 0x213 - 0x225 	| Message Object 	| Message #4                            	|
-| 0x226 - 0x238 	| Message Object 	| Message #5                            	|
-| 0x239 - 0x251 	| Message Object 	| Message #6                            	|
-| 0x252 - 0x264 	| Message Object 	| Message #7                            	|
-| 0x265 - 0x277 	| Message Object 	| Message #8                            	|
-| 0x278 - 0x290 	| Message Object 	| Message #9                            	|
-| 0x291 - 0x303 	| Message Object 	| Message #10                           	|
-| 0x304 - 0x316 	| Message Object 	| Message #11                           	|
-| 0x317 - 0x329 	| Message Object 	| Message #12                           	|
-| 0x330 - 0x342 	| Message Object 	| Message #13                           	|
-| 0x343 - 0x355 	| Message Object 	| Message #14                           	|
-| 0x356 - 0x368 	| Message Object 	| Message #15                           	|
-| 0x369 - 0x381 	| Message Object 	| Message #16                           	|
-| 0x382 - 0x394 	| Message Object 	| Message #17                           	|
-| 0x395 - 0x407 	| Message Object 	| Message #18                           	|
-| 0x408 - 0x420 	| Message Object 	| Message #19                           	|
-| 0x421 - 0x433 	| Message Object 	| Message #20                           	|
-| 0x434         	| Offset         	| Next available spot @ <Base + Offset> 	|
+| 000 - 002 	| 0xC0FFEE       	| Initialization Flag                   	|
+| 003 - 017 	| Contact Object 	| Node's Contact: UUID and Name                  	|
+| 018 - 019 	| 0xFACE         	| Contact List Flag                     	|
+| 020         	| Counter        	| Number of Contacts                    	|
+| 021 - 035 	| Contact Object 	| Contact #1: UUID and Name             	|
+| 036 - 050 	| Contact Object 	| Contact #2: UUID and Name             	|
+| 051 - 065 	| Contact Object 	| Contact #3: UUID and Name             	|
+| 066 - 080 	| Contact Object 	| Contact #4: UUID and Name             	|
+| 081 - 095 	| Contact Object 	| Contact #5: UUID and Name             	|
+| 096 - 110 	| Contact Object 	| Contact #6: UUID and Name             	|
+| 111 - 125 	| Contact Object 	| Contact #7: UUID and Name             	|
+| 126 - 140 	| Contact Object 	| Contact #8: UUID and Name             	|
+| 141 - 155 	| Contact Object 	| Contact #9: UUID and Name             	|
+| 156 - 170 	| Contact Object 	| Contact #10: UUID and Name            	|
+| 171 - 172 	| 0xCA11         	| Message List Flag                     	|
+| 173         	| Counter        	| Number of Messages                    	|
+| 174 - 186 	| Message Object 	| Message #1                            	|
+| 187 - 199 	| Message Object 	| Message #2                            	|
+| 200 - 212 	| Message Object 	| Message #3                            	|
+| 213 - 225 	| Message Object 	| Message #4                            	|
+| 226 - 238 	| Message Object 	| Message #5                            	|
+| 239 - 251 	| Message Object 	| Message #6                            	|
+| 252 - 264 	| Message Object 	| Message #7                            	|
+| 265 - 277 	| Message Object 	| Message #8                            	|
+| 278 - 290 	| Message Object 	| Message #9                            	|
+| 291 - 303 	| Message Object 	| Message #10                           	|
+| 304 - 316 	| Message Object 	| Message #11                           	|
+| 317 - 329 	| Message Object 	| Message #12                           	|
+| 330 - 342 	| Message Object 	| Message #13                           	|
+| 343 - 355 	| Message Object 	| Message #14                           	|
+| 356 - 368 	| Message Object 	| Message #15                           	|
+| 369 - 381 	| Message Object 	| Message #16                           	|
+| 382 - 394 	| Message Object 	| Message #17                           	|
+| 395 - 407 	| Message Object 	| Message #18                           	|
+| 408 - 420 	| Message Object 	| Message #19                           	|
+| 421 - 433 	| Message Object 	| Message #20                           	|
+| 434         	| Offset         	| Next available spot @ <Base + Offset> 	|
 
 The memory map consists of the following sections: 
 
 1. **Flags:** There are three flags in the memory map that get verified at every boot for **integrity** and **schema**.
 
-   - **Initialization Flag:** Consists of three bytes (0x00 - 0x02) that spell `0xC0FFEE`. These bytes are set during the device's configuration stage. 
+   - **Initialization Flag:** Consists of three bytes (000 - 002) that spell `0xC0FFEE`. These bytes are set during the device's configuration stage. 
 
-   - **Contact List Flag:** Consists of two bytes (0x18 - 0x19) that spell `0xFACE`. These bytes are set during the device's configuration stage and mark the beginning of the contact list related entries in the EEPROM.
+   - **Contact List Flag:** Consists of two bytes (018 - 019) that spell `0xFACE`. These bytes are set during the device's configuration stage and mark the beginning of the contact list related entries in the EEPROM.
 
-   - **Message List Flag:** Consists of two bytes (0x171 - 0x172) that spell `0xCA11`. These bytes are set during the device's configuration stage and mark the beginning of the message list related entries in the EEPROM.
+   - **Message List Flag:** Consists of two bytes (171 - 172) that spell `0xCA11`. These bytes are set during the device's configuration stage and mark the beginning of the message list related entries in the EEPROM.
 
 2. **Counters:** There are two counter entries in the EEPROM. 
 
@@ -171,9 +170,9 @@ The memory map consists of the following sections:
 
    * **Message Counter**: Keeps track the number of messages stored in the EEPROM. May hold values from 0 to 20. 
 
-3. **Offsets:** There is one offset entry in the EEPROM. According to the memory table above, the base address for the messages (or the address for the first message) is `0x174`. By adding an offset to this base address we can obtain the position of any message element relative to the first one. The offset entry (0x434) can store up to 8-bits of information allowing you to traverse from location `0x174` all the way to location `0x429`. This is useful to point to the next location available for saving a message. 
+3. **Offsets:** There is one offset entry in the EEPROM. According to the memory table above, the base address for the messages (or the address for the first message) is `174`. By adding an offset to this base address we can obtain the position of any message element relative to the first one. The offset entry (0x434) can store up to 8-bits of information allowing you to traverse from location `174` all the way to location `429`. This is useful to point to the next location available for saving a message. 
 
-4. **Contact Objects:** The EEPROM stores up to 10 contact objects. These objects are 15 bytes long and contain the contact's name and radio's UUID. The object located at address `0x003` contains information regarding the node and is set during configuration time. Since we only have room for ten contacts, additional contacts must not be allowed. See the `Contact` class for more information. 
+4. **Contact Objects:** The EEPROM stores up to 10 contact objects. These objects are 15 bytes long and contain the contact's name and radio's UUID. The object located at address `003` contains information regarding the node and is set during configuration time. Since we only have room for ten contacts, additional contacts must not be allowed. See the `Contact` class for more information. 
 
 5. **Message Objects:** The EEPROM stores up to 20 message objects. These objects are 13 bytes long and contain information on the sender, the receiver, the payload, and the payload's length. Since we only have room for twenty messages in the given design, we may need to reuse EEPROM locations if we receive more than twnety messages. See the `Message` class for more information. 
 
@@ -369,102 +368,3 @@ Let's start explaining what each of the functions must do.
 * **`char* payloadToString(unsigned short payload, unsigned char length)`:** Decodes a payload into a C-style string. Uses the payload's length to determine the size of the resulting string. Returns the decoded string.
 
 #### State Machine
-
-#### Getting Started
-
-1. **[Download](https://github.com/xaviermerino/ECE2551-SoftHardDesign/blob/master/Lab-2/lab2.ino?raw=true)** the starter file. It will contain the following file:
-  * `lab2.ino`
-
-2. The provided file is a template file that you can use to fill in your code.
-3. Fill in the function definitions for each of the classes' methods. You can implement your own, these are just there for reference.
-
-#### Functional Requirements
-You are required to build the circuit that makes this hardware token device possible.
-
-**When turned on for the first time the device must:**
-* Generate ten random numbers between `10000` and the limit given by `USHRT_MAX` defined in `<limits.h>`.
-* These numbers must be saved to the **EEPROM** so they can be retrieved after a **power cycle**.
-
-**After the numbers are loaded in the EEPROM the device must**:
-* Keep a timer.
-* The timer will help select an address to read from the EEPROM.
-* A new address should be selected every ten seconds.
-* The LCD should not display anything until the push button is pressed.
-* Once the button is pressed the device will get an address based on the time.
-* Once the button is pressed the LCD will display (the token will change accordingly):
-
-```
-Hardware Token
-35469
-```
-* After three seconds the LCD must should go blank.
-* The device follows this behavior until turned off.
-
-
-#### Technical Requirements
-This section will serve as a guideline of what is necessary for the program to behave correctly.
-* The token you generate randomly should be of type `unsigned short` and hold values from `10000` to `USHRT_MAX`.
-* The token is made up of **16 bits**.
-
-<br>
-
-![token](https://github.com/xaviermerino/ECE2551-SoftHardDesign/blob/master/Lab-2/token.png?raw=true)
-
-<br>
-
-* Each entry in the **EEPROM** can only hold 1 byte of data, therefore, you must break up the token into its first eight bits and its second eight bits. We will call the first eight bits the **high bits** and those will be bits 8-15. The **low bits** will be bits 0-7. You will save the high and low bits in the **EEPROM** and when a read is requested you must combine those two to obtain the original token.
-
-![broken](https://github.com/xaviermerino/ECE2551-SoftHardDesign/blob/master/Lab-2/tokenbreak.png?raw=true)
-
-<br>
-
-* Internally, your device should keep track of time. Every ten seconds it should read a different entry from the **EEPROM**. This is, every ten seconds the token will be different. Since you are only implementing ten tokens. You must wrap around to keep on showing tokens on the screen. This is, after you have read all the tokens, start from the first token saved in the **EEPROM** again.
-
-<br>
-
-![timer](https://github.com/xaviermerino/ECE2551-SoftHardDesign/blob/master/Lab-2/pattern.png?raw=true)
-
-<br>
-* Once you press the button, the device must show the current token on the screen.
-
-```
-Hardware Token
-33333
-```
-
-* After showing the token, the screen must go blank in three seconds.
-* You are free to use any available pin to connect the push button. For more information check the Arduino [Example on Buttons](https://www.arduino.cc/en/Tutorial/Button).
-
-Let's start explaining what each of the functions defined in given classes file must do.
-
-**The following functions belong to the `Eeprom` class:**
-* **Eeprom()**: Default constructor for the `Eeprom` class.
-* **byte read(unsigned int uiAddress)**: This function returns a byte of data read from the **EEPROM** at the specified address `uiAddress`. It's implementation is similar to the code snippet below.
-
-```c++
-byte read(unsigned int uiAddress) {
-  // Wait for completion of previous write
-  while (EECR & (1 << EEPE));
-
-  // Fill in with the appropriate code
-
-  return 1; // Change to return byte
-}
-
-```
-
-* **void write(unsigned int uiAddress, byte data)**: This function writes a byte of data read to the **EEPROM** at the specified address `uiAddress`. It's implementation is similar to the code snippet below.
-
-```c++
-void write(unsigned int uiAddress, byte data) {
-  // Wait for completion of previous write
-  while (EECR & (1 << EEPE));
-
-  // Fill in with the appropriate code
-}
-
-```
-
-**The following functions belong to the `Button` class:**
-* **Button(unsigned short pin)**: Constructor for the `Button` class.
-* **bool hasBeenPushed()**: This function returns `true` if the button has been pushed. It performs debouncing to avoid bogus readings.
