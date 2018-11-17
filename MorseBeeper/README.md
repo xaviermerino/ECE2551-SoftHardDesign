@@ -3,6 +3,14 @@
 #### Overview
 The overall goal of this project is to build a beeper (or pager). A beeper is a wireless communication device that receives and sends messages to others using its internal transceiver. In this project, we design and prototype a beeper that sends and receives Morse code. 
 
+![beeper](https://raw.githubusercontent.com/xaviermerino/ECE2551-SoftHardDesign/master/MorseBeeper/beeper.png)
+
+
+**What you will need:**
+* Arduino LCD Keypad Shield
+* Piezo Buzzer
+* NRF24L01+ module
+
 **In the process you will:**
 * Interface with a **Liquid Crystal Display** (LCD) component.
 * Use a voltage divider as an **analog input** to detect button presses.
