@@ -76,7 +76,7 @@ From the picture above you can see that the shield is equipped with the followin
 * Right
 * Reset
 
-These buttons (with the exception of the reset button) are wired to pin `A0` using a **voltage divider**. The Arduino reads the value at the pin and provides a number ranging from `0 - 1023` corresponding to the input voltage. The value read depends on which button was pressed. A portion of the schematic is presented below. 
+These buttons (with the exception of the reset button) are wired to pin `A0` using a **voltage divider**. The value at `Analog Pin 0` depends on which button was pressed. A portion of the schematic is presented below. 
 
 ![lcdkeypad](https://raw.githubusercontent.com/xaviermerino/ECE2551-SoftHardDesign/master/MorseBeeper/voltagedivider.png)
 
@@ -84,9 +84,11 @@ The resistances used in your shield might vary depending on the manufacturer. Yo
 
 ![lcdkeypad](https://raw.githubusercontent.com/xaviermerino/ECE2551-SoftHardDesign/master/MorseBeeper/ohmslaw.png)
 
-Alternatively, you can obtain this information with a multimeter or by reading the value at the pin when a button is pressed. The complete schematic can be found [here](http://image.dfrobot.com/image/data/DFR0009/LCDKeypad%20Shield%20V1.0%20SCH.pdf). 
+> Alternatively, you can obtain this information with a multimeter or by reading the value at the pin when a button is pressed. The complete schematic can be found [here](http://image.dfrobot.com/image/data/DFR0009/LCDKeypad%20Shield%20V1.0%20SCH.pdf). 
 
-You will be extending this class using **inheritance** to create an `LCDKeypad` class which will:
+The Arduino reads the value at the pin and provides a number ranging from `0 - 1023` corresponding to the input voltage. Since we calculated the voltage at `Analog Pin 0` to be `0.7081 V` we can proceed to map this value to reflect the Arduino's 10-bit ADC resolution. We know that `5V` is represented by the decimal value `1023` and that `0V` is represented by `0`. We can now map the value accordingly using the **Rule of Three**. We find out that the value at the pin read by the Arduino is around `144`.
+
+You will use **inheritance** to create an `LCDKeypad` class which will:
 * Extend the `LiquidCrystal` class.
 * Define the following `enum` to make your code more readable:
 
