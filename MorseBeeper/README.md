@@ -3,7 +3,7 @@
 #### Overview
 A beeper is a wireless communication device that receives and sends messages to others using its internal transceiver. In this project, we design and prototype a device that resembles a beeper and is able to store contacts, send, and receive morse code messages. 
 
-This project involves interfacing with an LCD screen, a radio module, the ATMega328P EEPROM, and a buzzer. We also design and implement an easy to navigate user interface in a constrained 16x2 screen while managing external interrupts and handling data storage. 
+This project involves interfacing with an LCD screen, a radio module, the EEPROM, and a buzzer. We also design and implement an easy to navigate user interface in a constrained 16x2 screen while managing external interrupts and handling data storage. 
 
 In the end, all devices that follow this guideline should be able to communicate as described in this document.
 
@@ -372,6 +372,8 @@ Let's start explaining what each of the functions must do.
 #### State Machine
 We have modeled the beeper as a **state machine** based on its behavior. Take a look at the diagram below.
 
+![statemachine](https://raw.githubusercontent.com/xaviermerino/ECE2551-SoftHardDesign/master/MorseBeeper/statemachine.png)
+
 The following states can be identified:
 
 * **Setup**: First time boot. User enters his name and a UUID gets generated. User information is stored in the EEPROM. Subsequent boots skip this state and start in the `Menu` state.
@@ -406,13 +408,15 @@ The following states can be identified:
   * **UP**: Goes back to the previous screen.
   * **DOWN**: None
     
-* **New Contact**: Screen for new contact name input. A marker on the top right of the screen determines whether this is the first or second screen in the process of adding a contact. The first screen consists of inputting the new contact's name while the second screen consists of inputting the new contact's UUID. 
+* **New Contact**: Validates whether or not there is space for a new contact. If there is, it transitions to the `New Contact Name` state. Otherwise, it transitions to the `List Full` state.
+
+* **New Contact Name**: Screen for new contact name input. A marker on the top right of the screen determines whether this is the first or second screen in the process of adding a contact. The first screen consists of inputting the new contact's name while the second screen consists of inputting the new contact's UUID. 
   * **SELECT**: Saves name and goes to the `New Contact UUID` screen.
   * **LEFT**: Erases the last character and moves cursor to the left.
   * **RIGHT**: Confirms character and moves cursor to the right.
   * **UP**: Scrolls letter.
   * **DOWN**: Scrolls letter.
-
+  * 
 * **New Contact UUID**: Screen for new contact name input. A marker on the top right of the screen determines that this is the second screen in the process of adding a new contact. 
   * **SELECT**: Saves UUID and goes to the `New Contact Added` screen. Saves contact to the EEPROM.
   * **LEFT**: Erases the last character and moves cursor to the left.
@@ -420,7 +424,15 @@ The following states can be identified:
   * **UP**: Scrolls letter.
   * **DOWN**: Scrolls letter.
    
-* **New Contact Added**: Informative screen that let's the user know that the contact was successfully added. Times out in two seconds returning back to the main menu.
+* **Contact Added**: Informative screen that let's the user know that the contact was successfully added. Times out in two seconds returning back to the main menu.
+  * **SELECT**: None
+  * **LEFT**: None
+  * **RIGHT**: None 
+  * **UP**: Goes back to main menu.
+  * **DOWN**: None
+  * **Time out**: Goes back to main menu in two seconds. The delay should be non-blocking.
+
+* **List Full**: Informative screen that let's the user know that there is no space for a new contact. Times out in two seconds returning back to the main menu.
   * **SELECT**: None
   * **LEFT**: None
   * **RIGHT**: None 
