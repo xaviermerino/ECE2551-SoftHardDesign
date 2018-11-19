@@ -370,11 +370,112 @@ Let's start explaining what each of the functions must do.
 * **`char* payloadToString(unsigned short payload, unsigned char length)`:** Decodes a payload into a C-style string. Uses the payload's length to determine the size of the resulting string. Returns the decoded string.
 
 #### State Machine
-We have modeled the beeper as a state machine based on its behavior. Take a look at the diagram below.
+We have modeled the beeper as a **state machine** based on its behavior. Take a look at the diagram below.
 
 The following states can be identified:
+
+* **Setup**: First time boot. User enters his name and a UUID gets generated. User information is stored in the EEPROM. Subsequent boots skip this state and start in the `Menu` state.
+  * **SELECT**: Saves the user's name and goes to the main menu.
+  * **LEFT**: Erases the last character and moves cursor to the left.
+  * **RIGHT**: Confirms character moves cursor to right.
+  * **UP**: Scrolls letter
+  * **DOWN**: Scrolls letter
+  
+* **Menu**: Displays the menu options. 
+  * **SELECT**: Goes to the selected option. The following is a list of valid menu options.
+    * **Contacts**: Goes to `Contacts`.
+    * **Messages**: Goes to `Messages`.
+    * **N. Contact**: Goes to `New Contact`.
+    * **About Me**: Goes to `About Me`.
+  * **LEFT**: Scrolls options.
+  * **RIGHT**: Scrolls options.
+  * **UP**: None
+  * **DOWN**: None
+  
+* **Contacts**: Displays the contacts stored in the device.
+  * **SELECT**: Compose message for selected contact.
+  * **LEFT**: Scrolls contact options.
+  * **RIGHT**: Scrolls contact options.
+  * **UP**: Goes back to the previous screen.
+  * **DOWN**: None
+  
+* **Messages**: Displays the messages stored in the device. A list of sent and received messages. A marker on the top right of the screen determines whether the message was sent or received.
+  * **SELECT**: Open the selected option.
+  * **LEFT**: Scroll messages.
+  * **RIGHT**: Scroll messages.
+  * **UP**: Goes back to the previous screen.
+  * **DOWN**: None
+    
+* **New Contact**: Screen for new contact name input. A marker on the top right of the screen determines whether this is the first or second screen in the process of adding a contact. The first screen consists of inputting the new contact's name while the second screen consists of inputting the new contact's UUID. 
+  * **SELECT**: Saves name and goes to the `New Contact UUID` screen.
+  * **LEFT**: Erases the last character and moves cursor to the left.
+  * **RIGHT**: Confirms character and moves cursor to the right.
+  * **UP**: Scrolls letter.
+  * **DOWN**: Scrolls letter.
+
+* **New Contact UUID**: Screen for new contact name input. A marker on the top right of the screen determines that this is the second screen in the process of adding a new contact. 
+  * **SELECT**: Saves UUID and goes to the `New Contact Added` screen. Saves contact to the EEPROM.
+  * **LEFT**: Erases the last character and moves cursor to the left.
+  * **RIGHT**: Confirms character and moves cursor to the right.
+  * **UP**: Scrolls letter.
+  * **DOWN**: Scrolls letter.
+   
+* **New Contact Added**: Informative screen that let's the user know that the contact was successfully added. Times out in two seconds returning back to the main menu.
+  * **SELECT**: None
+  * **LEFT**: None
+  * **RIGHT**: None 
+  * **UP**: Goes back to main menu.
+  * **DOWN**: None
+  * **Time out**: Goes back to main menu in two seconds. The delay should be non-blocking.
+
+* **About Me**: Shows the user's name and UUID.
+  * **SELECT**: None
+  * **LEFT**: None
+  * **RIGHT**: None
+  * **UP**: Goes back to main menu.
+  * **DOWN**: None
+    
+* **Message New**: Displays the user name to who we are sending the message to. It also allows constructing a morse string to be sent.
+  * **SELECT**: Attempts to send the message.
+  * **LEFT**: Write a dot.
+  * **RIGHT**: Write a dash.
+  * **UP**: Goes back to the previous screen.
+  * **DOWN**: Erases one character.
+  
+* **Message Sent**: Informative screen that let's the user know that the message was sent successfully. Times out in two seconds returning back to the main menu.
+  * **SELECT**: None
+  * **LEFT**: None
+  * **RIGHT**: None
+  * **UP**: Goes back to main menu
+  * **DOWN**: None
+  * **Time out**: Goes back to main menu in two seconds. The delay should be non-blocking.
+  
+* **Message Failed**: Informative screen that let's the user know that the message could not be sent. Times out in two seconds returning back to the main menu.
+  * **SELECT**: None
+  * **LEFT**: None
+  * **RIGHT**: None
+  * **UP**: Goes back to main menu
+  * **DOWN**: None
+  * **Time out**: Goes back to main menu in two seconds. The delay should be non-blocking.
+  
+* **Message Open**: Displays a message that has been saved in the device. Displays whether the message was sent or received, the user, and the message.
+  * **SELECT**: None
+  * **LEFT**: None
+  * **RIGHT**: None
+  * **UP**: Goes back to the previous screen.
+  * **DOWN**: None
+    
+* **Message Received**: Informative screen that let's the user know that a new message has been received. Times out in two seconds returning back to the previous screen.
+  * **SELECT**: None
+  * **LEFT**: None
+  * **RIGHT**: None
+  * **UP**: Goes back to the previous screen.
+  * **DOWN**: None
+  * **Time out**: Goes back to the previous screen in two seconds. The delay should be non-blocking.
 
 #### User Interface
 The following section depicts the user interface that must be implemented for the beeper.
 
 ![screenmap](https://raw.githubusercontent.com/xaviermerino/ECE2551-SoftHardDesign/master/MorseBeeper/ScreenMap.png)
+
+#### Submission
