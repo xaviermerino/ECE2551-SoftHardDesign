@@ -35,7 +35,6 @@ We use the term **universally unique identifier (UUID)** to refer to a number th
 
 We are going to use the `Entropy` class to generate a sequence of random bytes using the `Watchdog Timer`'s natural jitter. These bytes will become our unique identifier. You can find the class [here](https://sites.google.com/site/astudyofentropy/file-cabinet/Entropy-v1.0.2.zip?attredirects=0&d=1).
 
-
 #### NR24 Class
 The `nRF24L01+` is a single chip radio transceiver that operates in the 2.4 - 2.5 GHz band. It features ultra low power consumption and speeds up to 2 Mbps. We need to use a microcontroller to configure this radio through a **Serial Peripheral Interface (SPI)**. You can download the datasheet [here](https://www.sparkfun.com/datasheets/Components/SMD/nRF24L01Pluss_Preliminary_Product_Specification_v1_0.pdf).
 
@@ -78,7 +77,6 @@ The following table describes which pins are used by the shield.
 | 5           	| LCD DB5         	| 9  | LCD Enable |    
 | 6           	| LCD DB6         	| 10 | Backlight Control |  
 
-
 From the picture above you can see that the shield is equipped with the following buttons:
 * Select
 * Left
@@ -87,17 +85,17 @@ From the picture above you can see that the shield is equipped with the followin
 * Right
 * Reset
 
-These buttons (with the exception of the reset button) are wired to pin `A0` using a **voltage divider**. The value at `Analog Pin 0` depends on which button was pressed. A portion of the schematic is presented below. 
+These buttons (with the exception of the reset button) are wired to pin `A0` using a **voltage divider**. The value at pin `A0` depends on which button was pressed. A portion of the schematic is presented below. 
 
 ![lcdkeypad](https://raw.githubusercontent.com/xaviermerino/ECE2551-SoftHardDesign/master/MorseBeeper/voltagedivider.png)
 
-The resistances used in your shield might vary depending on the manufacturer. You will need this information when calculating the expected value for a button press. For instance, when button `UP` is pressed, the voltage at `Analog Pin 0` can be found using **Ohm's law**.
+The resistances used in your shield might vary depending on the manufacturer. You will need this information when calculating the expected value for a button press. For instance, when button `UP` is pressed, the voltage at pin `A0` can be found using **Ohm's law**.
 
 ![lcdkeypad](https://raw.githubusercontent.com/xaviermerino/ECE2551-SoftHardDesign/master/MorseBeeper/ohmslaw.png)
 
 > Alternatively, you can obtain this information with a multimeter or by reading the value at the pin when a button is pressed. The complete schematic can be found [here](http://image.dfrobot.com/image/data/DFR0009/LCDKeypad%20Shield%20V1.0%20SCH.pdf). 
 
-The Arduino reads the value at the pin and provides a number ranging from `0 - 1023` corresponding to the input voltage. Since we calculated the voltage at `Analog Pin 0` to be `0.7081 V` we can proceed to map this value to reflect the Arduino's 10-bit ADC resolution. We know that `5V` is represented by the decimal value `1023` and that `0V` is represented by `0`. We can now map the value accordingly using the **Rule of Three**. We find out that the value at the pin read by the Arduino is around `144`.
+The Arduino reads the value at the pin and provides a number ranging from `0 - 1023` corresponding to the input voltage. Since we calculated the voltage at pin `A0` to be `0.7081 V` we can proceed to map this value to reflect the Arduino's 10-bit ADC resolution. We know that `5V` is represented by the decimal value `1023` and that `0V` is represented by `0`. We can now map the value accordingly using the **Rule of Three**. We find out that the value at the pin read by the Arduino is around `144`.
 
 You will use **inheritance** to create an `LCDKeypad` class which will:
 * Extend the `LiquidCrystal` class.
@@ -174,11 +172,11 @@ The memory map consists of the following sections:
 
    * **Message Counter**: Keeps track the number of messages stored in the EEPROM. May hold values from 0 to 20. 
 
-3. **Offsets:** There is one offset entry in the EEPROM. According to the memory table above, the base address for the messages (or the address for the first message) is `174`. By adding an offset to this base address we can obtain the position of any message element relative to the first one. The offset entry (0x434) can store up to 8-bits of information allowing you to traverse from location `174` all the way to location `429`. This is useful to point to the next location available for saving a message. 
+3. **Offsets:** There is one offset entry in the EEPROM. According to the memory table above, the base address for the messages (or the address for the first message) is `174`. By adding an offset to this base address we can obtain the position of any message element relative to the first one. The offset entry can store up to 8-bits of information allowing you to traverse from location `174` all the way to location `429`. This is useful to point to the next location available for saving a message. 
 
 4. **Contact Objects:** The EEPROM stores up to 10 contact objects. These objects are 15 bytes long and contain the contact's name and radio's UUID. The object located at address `003` contains information regarding the node and is set during configuration time. Since we only have room for ten contacts, additional contacts must not be allowed. See the `Contact` class for more information. 
 
-5. **Message Objects:** The EEPROM stores up to 20 message objects. These objects are 13 bytes long and contain information on the sender, the receiver, the payload, and the payload's length. Since we only have room for twenty messages in the given design, we may need to reuse EEPROM locations if we receive more than twnety messages. See the `Message` class for more information. 
+5. **Message Objects:** The EEPROM stores up to 20 message objects. These objects are 13 bytes long and contain information on the sender, the receiver, the payload, and the payload's length. Since we only have room for twenty messages in the given design, we may need to reuse EEPROM locations if we receive more than twenty messages. See the `Message` class for more information. 
 
 You will be implementing the `Memory` class that handles writing and reading data to the EEPROM. A template is provided below.
 
@@ -372,3 +370,11 @@ Let's start explaining what each of the functions must do.
 * **`char* payloadToString(unsigned short payload, unsigned char length)`:** Decodes a payload into a C-style string. Uses the payload's length to determine the size of the resulting string. Returns the decoded string.
 
 #### State Machine
+We have modeled the beeper as a state machine based on its behavior. Take a look at the diagram below.
+
+The following states can be identified:
+
+#### User Interface
+The following section depicts the user interface that must be implemented for the beeper.
+
+![screenmap](https://raw.githubusercontent.com/xaviermerino/ECE2551-SoftHardDesign/master/MorseBeeper/ScreenMap.png)
