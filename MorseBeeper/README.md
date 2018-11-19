@@ -381,7 +381,7 @@ The following states can be identified:
   * **UP**: Scrolls letter
   * **DOWN**: Scrolls letter
   
-* **Menu**: Displays the menu options. 
+* **Menu**: Displays the menu options. There are blinking arrows on the ends of the second row. These arrows indicate that the user can press the Left or Right buttons to scroll to the next option. The options wrap around once all have been displayed. The arrows complete a blink cycle in a second.
   * **SELECT**: Goes to the selected option. The following is a list of valid menu options.
     * **Contacts**: Goes to `Contacts`.
     * **Messages**: Goes to `Messages`.
@@ -392,7 +392,7 @@ The following states can be identified:
   * **UP**: None
   * **DOWN**: None
   
-* **Contacts**: Displays the contacts stored in the device.
+* **Contacts**: Displays the contacts stored in the device. There are blinking arrows on the ends of the second row. These arrows indicate that the user can press the Left or Right buttons to scroll to the next option. The options wrap around once all have been displayed. The arrows complete a blink cycle in a second.
   * **SELECT**: Compose message for selected contact.
   * **LEFT**: Scrolls contact options.
   * **RIGHT**: Scrolls contact options.
@@ -442,7 +442,7 @@ The following states can be identified:
   * **UP**: Goes back to the previous screen.
   * **DOWN**: Erases one character.
   
-* **Message Sent**: Informative screen that let's the user know that the message was sent successfully. Times out in two seconds returning back to the main menu.
+* **Message Sent**: Informative screen that let's the user know that the message was sent successfully. Play a tone through the buzzer indicating that a message was sent. Times out in two seconds returning back to the main menu.
   * **SELECT**: None
   * **LEFT**: None
   * **RIGHT**: None
@@ -450,7 +450,7 @@ The following states can be identified:
   * **DOWN**: None
   * **Time out**: Goes back to main menu in two seconds. The delay should be non-blocking.
   
-* **Message Failed**: Informative screen that let's the user know that the message could not be sent. Times out in two seconds returning back to the main menu.
+* **Message Failed**: Informative screen that let's the user know that the message could not be sent. Play a tone through the buzzer indicating that sending the failed. Times out in two seconds returning back to the main menu.
   * **SELECT**: None
   * **LEFT**: None
   * **RIGHT**: None
@@ -465,7 +465,7 @@ The following states can be identified:
   * **UP**: Goes back to the previous screen.
   * **DOWN**: None
     
-* **Message Received**: Informative screen that let's the user know that a new message has been received. Times out in two seconds returning back to the previous screen.
+* **Message Received**: Informative screen that let's the user know that a new message has been received. Times out in two seconds returning back to the previous screen. Play a tone through the buzzer indicating that a message was received. 
   * **SELECT**: None
   * **LEFT**: None
   * **RIGHT**: None
@@ -479,3 +479,5 @@ The following section depicts the user interface that must be implemented for th
 ![screenmap](https://raw.githubusercontent.com/xaviermerino/ECE2551-SoftHardDesign/master/MorseBeeper/ScreenMap.png)
 
 #### Submission
+* Once your team has completed the assignment show it your TA. You might be asked to reconfigure the device, explain your code, test communicating with other groups, etc.
+* Zip your files for submission. The .zip file must be named after your Tracks ID. This is for plagiarism detection purposes. 
