@@ -179,7 +179,7 @@ The memory map consists of the following sections:
 
 5. **Message Objects:** The **EEPROM** stores up to 20 message objects. These objects are **13 bytes** long and contain information on the sender, the receiver, the payload, and the payload's length. Since we only have room for twenty messages in the given design, we may need to reuse **EEPROM** locations if we receive more than twenty messages. See the `Message` class for more information. 
 
-You will be implementing the `Memory` class that handles writing and reading data to the **EEPROM**. A template is provided below.
+You will be implementing the `Memory` class that handles writing and reading data to the **EEPROM**. A template is provided below. You must not use Arduino's EEPROM class.
 
 ```c++
 class Memory {
