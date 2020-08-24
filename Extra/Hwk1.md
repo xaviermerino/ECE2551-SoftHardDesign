@@ -4,7 +4,7 @@ During lab time next week, I'll sit one-by-one with you to assign a grade to you
 
 ---
 
-* **Question #1A:** Write a program that determines whether a number is **prime** or not. Use recursion to implement this behavior. The program should validate all input. 
+* **Question #0A:** Write a program that determines whether a number is **prime** or not. Use recursion to implement this behavior. The program should validate all input. 
 
 ```
 Input a positive number: 3
@@ -23,7 +23,7 @@ Name your file `<tracksID>.zip` where you replace *tracksID* for your current ID
 
 ---
 
-* **Question #1B:** Use Euclid's algorithm to find the **Greatest Common Divisor (GCD)** of two numbers. Use recursion to implement this behavior. The program should validate all input. Watch the video below to understand how the algorithm works.
+* **Question #0B:** Use Euclid's algorithm to find the **Greatest Common Divisor (GCD)** of two numbers. Use recursion to implement this behavior. The program should validate all input. Watch the video below to understand how the algorithm works.
 
 </br>
 
@@ -50,7 +50,7 @@ Name your file `<tracksID>.zip` where you replace *tracksID* for your current ID
 
 ---
 
-* **Question #1C:** Use Dijkstra's algorithm to find the **Greatest Common Divisor (GCD)** of two numbers. Use recursion to implement this behavior. The program should validate all input.
+* **Question #0C:** Use Dijkstra's algorithm to find the **Greatest Common Divisor (GCD)** of two numbers. Use recursion to implement this behavior. The program should validate all input.
 
 </br>
 
