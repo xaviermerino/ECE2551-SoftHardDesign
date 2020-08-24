@@ -1,4 +1,4 @@
-## Homework
+## Homework 0
 Solve the following problems for your first homework. During your lab time this week, I'll be asking questions about the tasks. This is to ensure that you have a working setup.
 During lab time next week, I'll sit one-by-one with you to assign a grade to your efforts. You must, however, **submit your homework in Canvas by Monday, August 31st**.
 
@@ -18,7 +18,7 @@ Is number 3 prime?: No
 Would you like to try another number? (Yes = 1 / No = 0): 0
 ```
 
-Once you are done with this section, you should have 1 file containing your solution, main.cpp. Compress that file into a zip archive and submit it under the Hwk1A dropbox.
+Once you are done with this section, you should have 1 file containing your solution, main.cpp. Compress that file into a zip archive and submit it under the Hwk0A dropbox.
 Name your file `<tracksID>.zip` where you replace *tracksID* for your current ID. For instance, if my tracks ID is xmerino2012, then I would submit `xmerino2012.zip`
 
 ---
@@ -45,7 +45,7 @@ GCD is: 6
 </br>
 
 
-Once you are done with this section, you should have 1 file containing your solution, main.cpp. Compress that file into a zip archive and submit it under the Hwk1B dropbox.
+Once you are done with this section, you should have 1 file containing your solution, main.cpp. Compress that file into a zip archive and submit it under the Hwk0B dropbox.
 Name your file `<tracksID>.zip` where you replace *tracksID* for your current ID. For instance, if my tracks ID is xmerino2012, then I would submit `xmerino2012.zip`
 
 ---
@@ -65,5 +65,5 @@ Input the second number: 30
 GCD is: 6
 ```
 
-Once you are done with this section, you should have 1 file containing your solution, main.cpp. Compress that file into a zip archive and submit it under the Hwk1C dropbox.
+Once you are done with this section, you should have 1 file containing your solution, main.cpp. Compress that file into a zip archive and submit it under the Hwk0C dropbox.
 Name your file `<tracksID>.zip` where you replace *tracksID* for your current ID. For instance, if my tracks ID is xmerino2012, then I would submit `xmerino2012.zip`
