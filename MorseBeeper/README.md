@@ -47,7 +47,7 @@ The `nRF24L01+` implements the concept of data pipes. **Pipes** are logical chan
 
 We need to generate a 40-bit UUID to assign to our radio's receiving data pipe to minimize the chances of two radios having the same address during lab. It is important to ensure that the address that you assign to the radio's receiving data pipe is **unique**. 
 
-We will use the [`NR24` library](https://github.com/nRF24/RF24) to control the radio. Documentation for the library can be found [here](http://tmrh20.github.io/RF24/classRF24.html).
+We will use the [`NR24` library](https://github.com/nRF24/RF24) to control the radio. Documentation for the library can be found [here](https://nrf24.github.io/RF24/).
 
 The following table describes how to wire your `NRF24L01+` module. **Please note that the module can not operate at 5V.**
 
