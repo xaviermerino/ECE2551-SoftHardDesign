@@ -28,7 +28,7 @@ You are tasked with creating an algorithm that will solve a binary maze. Take th
 
 ### Getting Started
 
-1. **[Download](https://github.com/xaviermerino/ECE2551-SoftHardDesign/blob/master/Homework-1/starter.zip?raw=true)** the starter file set. It will contain the following files:
+1. **[Download](https://github.com/xaviermerino/ECE2551-SoftHardDesign/raw/master/Homework-1/starter.zip)** the starter file set. It will contain the following files:
   * `catch.hpp`
   * `main.cpp`
   * `solver.h`
