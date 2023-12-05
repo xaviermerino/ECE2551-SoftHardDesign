@@ -34,7 +34,7 @@ If we compare our beeper to a cellphone you'll agree that we need to assign it a
 
 We use the term **universally unique identifier (UUID)** to refer to a number that is used to uniquely identify some entity. The probability that a **UUID** will be duplicated is not zero but it is low enough to be considered negligible.
 
-We are going to use the `Entropy` class to generate a sequence of random bytes using the `Watchdog Timer`'s natural jitter. These bytes will become our unique identifier. You can find the class [here](https://sites.google.com/site/astudyofentropy/file-cabinet/Entropy-v1.0.2.zip?attredirects=0&d=1).
+We are going to use the `Entropy` class to generate a sequence of random bytes using the `Watchdog Timer`'s natural jitter. These bytes will become our unique identifier. You can find the class [here](https://github.com/pmjdebruijn/Arduino-Entropy-Library/archive/refs/heads/master.zip).
 
 #### NR24 Class
 The `nRF24L01+` is a single chip radio transceiver that operates in the 2.4 - 2.5 GHz band. It features ultra low power consumption and speeds up to 2 Mbps. We need to use a microcontroller to configure this radio through a **Serial Peripheral Interface (SPI)**. You can download the datasheet [here](https://www.sparkfun.com/datasheets/Components/SMD/nRF24L01Pluss_Preliminary_Product_Specification_v1_0.pdf).
